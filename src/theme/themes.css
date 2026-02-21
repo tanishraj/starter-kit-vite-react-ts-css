@@ -50,7 +50,7 @@
   --color-link: var(--color-royal-azure-700);
   --color-link-hover: var(--color-royal-azure-800);
 
-  --color-disabled-bg: var(--color-platinum-100);
+  --color-disabled-bg: var(--color-platinum-500);
   --color-disabled-text: var(--color-deep-space-blue-400);
 }
 
@@ -105,6 +105,6 @@
   --color-link: var(--color-turquoise-300);
   --color-link-hover: var(--color-turquoise-200);
 
-  --color-disabled-bg: var(--color-deep-space-blue-800);
+  --color-disabled-bg: var(--color-deep-space-blue-500);
   --color-disabled-text: var(--color-platinum-700);
 }
