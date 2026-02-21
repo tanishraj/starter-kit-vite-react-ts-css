@@ -2,11 +2,13 @@
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
     "includes": [
-      "**",
-      "!dist",
-      "!node_modules",
-      "!storybook-static",
-      "!coverage"
+      "src/**",
+      "!**/dist/**",
+      "!**/node_modules/**",
+      "!**/storybook-static/**",
+      "!**/coverage/**",
+      "!**/.vite/**",
+      "!**/build/**"
     ]
   },
   "formatter": {
