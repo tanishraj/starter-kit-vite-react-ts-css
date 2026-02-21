@@ -50,8 +50,8 @@
 
 .btn--outline {
   background: transparent;
-  border-color: var(--btn-bg);
-  color: var(--btn-bg);
+  border-color: var(--btn-outline-fg, var(--btn-bg));
+  color: var(--btn-outline-fg, var(--btn-bg));
 }
 
 .btn--outline:hover:not(:disabled) {
@@ -71,7 +71,7 @@
 
 .btn--ghost {
   background: transparent;
-  color: var(--btn-bg);
+  color: var(--btn-ghost-fg, var(--btn-bg));
 }
 
 .btn--ghost:hover:not(:disabled) {
@@ -127,6 +127,8 @@
   --btn-fg: var(--color-on-accent);
   --btn-soft-bg: var(--color-accent-100);
   --btn-soft-fg: var(--color-accent-700);
+  --btn-outline-fg: var(--color-accent-700);
+  --btn-ghost-fg: var(--color-accent-700);
 }
 
 .btn--color-success {
