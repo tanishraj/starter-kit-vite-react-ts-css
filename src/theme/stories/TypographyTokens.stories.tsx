@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { getTokens, TokenSection } from './tokenUtils';
 import './tokens.css';
+import { getAllCSSVariablesWithPrefix } from '../../utils';
 
-const typographyTokenNames = [
-  '--font-family-sans',
-  '--font-family-mono',
-] as const;
+const typographyTokenNames = getAllCSSVariablesWithPrefix('--font-family');
 
 const sampleByToken: Record<(typeof typographyTokenNames)[number], string> = {
   '--font-family-sans': 'Sphinx of black quartz, judge my vow.',

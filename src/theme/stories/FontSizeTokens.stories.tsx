@@ -1,25 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { getTokens, TokenSection } from './tokenUtils';
 import './tokens.css';
+import {
+  getAllCSSVariablesWithPrefix,
+  getCSSVarTshirtScale,
+  getSortedTshirtSize,
+} from '../../utils';
 
-const fontSizeScale = [
-  '4xs',
-  '3xs',
-  '2xs',
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  '2xl',
-  '3xl',
-  '4xl',
-  '5xl',
-  '6xl',
-  '7xl',
-] as const;
+const fontSizeCSSVars = getAllCSSVariablesWithPrefix('--font-size');
+const fontSizeScaleFromCSS = getCSSVarTshirtScale(fontSizeCSSVars);
+const sortedFontSizeScale = getSortedTshirtSize(fontSizeScaleFromCSS);
 
-const fontSizeTokenNames = fontSizeScale.map((size) => `--font-size-${size}`);
+const fontSizeTokenNames = sortedFontSizeScale.map(
+  (size) => `--font-size-${size}`,
+);
 
 const meta = {
   title: 'Tokens/Font Size',

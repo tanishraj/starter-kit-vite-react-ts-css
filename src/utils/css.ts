@@ -103,7 +103,7 @@ export const getCSSVarTshirtScale = <T extends VarName | VarName[]>(
     const normalized = cssVar.toLowerCase().trim();
     const lastPart = normalized.split('-').at(-1) ?? '';
 
-    const match = lastPart.match(/^(\d+)?(xs|sm|md|lg|xl|none)$/);
+    const match = lastPart.match(/^(\d+)?(xs|sm|md|lg|xl|none|full)$/);
 
     return match ? lastPart : '';
   };

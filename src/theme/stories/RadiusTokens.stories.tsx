@@ -1,26 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { getTokens, TokenSection } from './tokenUtils';
 import './tokens.css';
+import {
+  getAllCSSVariablesWithPrefix,
+  getCSSVarTshirtScale,
+  getSortedTshirtSize,
+} from '../../utils';
 
-const radiusScale = [
-  '4xs',
-  '3xs',
-  '2xs',
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  '2xl',
-  '3xl',
-  '4xl',
-  '5xl',
-  '6xl',
-  '7xl',
-  'full',
-] as const;
+const radiusCSSVars = getAllCSSVariablesWithPrefix('--radius');
+const radiusScaleFromCSS = getCSSVarTshirtScale(radiusCSSVars);
+const sortedRadiusScale = getSortedTshirtSize(radiusScaleFromCSS);
 
-const radiusTokenNames = radiusScale.map((size) => `--radius-${size}`);
+const radiusTokenNames = sortedRadiusScale.map((size) => `--radius-${size}`);
 
 const meta = {
   title: 'Tokens/Radius',

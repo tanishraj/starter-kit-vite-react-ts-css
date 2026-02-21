@@ -1,25 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { getTokens, TokenSection } from './tokenUtils';
 import './tokens.css';
+import {
+  getAllCSSVariablesWithPrefix,
+  getCSSVarTshirtScale,
+  getSortedTshirtSize,
+} from '../../utils';
 
-const shadowScale = [
-  '4xs',
-  '3xs',
-  '2xs',
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  '2xl',
-  '3xl',
-  '4xl',
-  '5xl',
-  '6xl',
-  '7xl',
-] as const;
+const shadowCSSVars = getAllCSSVariablesWithPrefix('--shadow');
+const shadowScaleFromCSS = getCSSVarTshirtScale(shadowCSSVars);
+const sortedShadowScale = getSortedTshirtSize(shadowScaleFromCSS);
 
-const shadowTokenNames = shadowScale.map((size) => `--shadow-${size}`);
+const shadowTokenNames = sortedShadowScale.map((size) => `--shadow-${size}`);
 
 const meta = {
   title: 'Tokens/Shadows',

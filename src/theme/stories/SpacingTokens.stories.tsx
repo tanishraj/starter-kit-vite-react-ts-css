@@ -1,26 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { getTokens, TokenSection } from './tokenUtils';
 import './tokens.css';
+import {
+  getAllCSSVariablesWithPrefix,
+  getCSSVarTshirtScale,
+  getSortedTshirtSize,
+} from '../../utils';
 
-const spacingScale = [
-  'none',
-  '4xs',
-  '3xs',
-  '2xs',
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  '2xl',
-  '3xl',
-  '4xl',
-  '5xl',
-  '6xl',
-  '7xl',
-] as const;
+const spaceCSSVars = getAllCSSVariablesWithPrefix('--space');
+const spaceScaleFromCSS = getCSSVarTshirtScale(spaceCSSVars);
+const sortedSpaceScale = getSortedTshirtSize(spaceScaleFromCSS);
 
-const spacingTokenNames = spacingScale.map((size) => `--space-${size}`);
+const spacingTokenNames = sortedSpaceScale.map((size) => `--space-${size}`);
 
 const meta = {
   title: 'Tokens/Spacing',
