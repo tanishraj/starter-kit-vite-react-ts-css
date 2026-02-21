@@ -1,0 +1,176 @@
+.inp {
+  --inp-bg: var(--color-bg-surface);
+  --inp-border: var(--color-border-default);
+  --inp-border-hover: var(--color-border-strong);
+  --inp-ring: var(--color-focus-ring);
+  --inp-text: var(--color-text-primary);
+  --inp-placeholder: var(--color-text-muted);
+  --inp-muted: var(--color-text-secondary);
+  --inp-message: var(--color-text-muted);
+  --inp-height: 2.75rem;
+  --inp-padding-x: var(--space-md);
+  --inp-font-size: var(--font-size-md);
+  --inp-adornment-size: 1rem;
+
+  display: grid;
+  gap: var(--space-2xs);
+}
+
+.inp--full-width {
+  width: 100%;
+}
+
+.inp--soft {
+  --inp-bg: var(--color-bg-surface-2);
+  --inp-border: var(--color-border-subtle);
+}
+
+.inp--sm {
+  --inp-height: 2.25rem;
+  --inp-padding-x: var(--space-sm);
+  --inp-font-size: var(--font-size-sm);
+  --inp-adornment-size: 0.875rem;
+}
+
+.inp--md {
+  --inp-height: 2.75rem;
+  --inp-padding-x: var(--space-md);
+  --inp-font-size: var(--font-size-md);
+  --inp-adornment-size: 1rem;
+}
+
+.inp--lg {
+  --inp-height: 3.25rem;
+  --inp-padding-x: var(--space-lg);
+  --inp-font-size: var(--font-size-lg);
+  --inp-adornment-size: 1.125rem;
+}
+
+.inp--tone-success {
+  --inp-border: var(--color-success-500);
+  --inp-border-hover: var(--color-success-500);
+  --inp-ring: var(--color-success-500);
+  --inp-message: var(--color-success-500);
+}
+
+.inp--tone-warning {
+  --inp-border: var(--color-warning-500);
+  --inp-border-hover: var(--color-warning-500);
+  --inp-ring: var(--color-warning-500);
+  --inp-message: var(--color-warning-500);
+}
+
+.inp--tone-danger {
+  --inp-border: var(--color-danger-500);
+  --inp-border-hover: var(--color-danger-500);
+  --inp-ring: var(--color-danger-500);
+  --inp-message: var(--color-danger-500);
+}
+
+.inp__label {
+  align-items: center;
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  gap: var(--space-3xs);
+  line-height: var(--line-height-sm);
+}
+
+.inp__required {
+  color: var(--color-danger-500);
+}
+
+.inp__control-wrap {
+  align-items: center;
+  background: var(--inp-bg);
+  border: 1px solid var(--inp-border);
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  gap: var(--space-xs);
+  min-height: var(--inp-height);
+  padding-inline: var(--inp-padding-x);
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.inp__control-wrap:hover {
+  border-color: var(--inp-border-hover);
+}
+
+.inp__control-wrap:focus-within {
+  border-color: var(--inp-ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--inp-ring) 30%, transparent);
+}
+
+.inp__control {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--inp-text);
+  flex: 1;
+  font-family: var(--font-family-sans);
+  font-size: var(--inp-font-size);
+  line-height: var(--line-height-md);
+  min-width: 0;
+  outline: 0;
+}
+
+.inp__control::placeholder {
+  color: var(--inp-placeholder);
+}
+
+.inp__adornment,
+.inp__clear {
+  color: var(--inp-muted);
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: var(--inp-adornment-size);
+  line-height: 1;
+}
+
+.inp__clear {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  justify-content: center;
+  margin-inline-end: calc(var(--space-3xs) * -1);
+  min-height: 1.25rem;
+  min-width: 1.25rem;
+  padding: 0;
+}
+
+.inp__clear:hover {
+  background: color-mix(in srgb, var(--inp-muted) 16%, transparent);
+}
+
+.inp__message {
+  color: var(--inp-message);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-sm);
+  margin: 0;
+}
+
+.inp__message--error {
+  color: var(--color-danger-500);
+}
+
+.inp--disabled .inp__control-wrap {
+  background: var(--color-disabled-bg);
+  border-color: var(--color-disabled-bg);
+}
+
+.inp--disabled .inp__control,
+.inp--disabled .inp__adornment,
+.inp--disabled .inp__clear {
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+}
+
+.inp--disabled .inp__control::placeholder {
+  color: var(--color-disabled-text);
+}

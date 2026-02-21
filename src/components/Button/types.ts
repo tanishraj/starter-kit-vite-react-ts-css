@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ComponentPropsWithRef, ReactNode } from 'react';
 
 export type ButtonVariant = 'solid' | 'outline' | 'soft' | 'ghost';
 
@@ -13,7 +13,7 @@ export type ButtonColor =
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'> {
+  extends Omit<ComponentPropsWithRef<'button'>, 'color'> {
   variant?: ButtonVariant;
   color?: ButtonColor;
   size?: ButtonSize;
