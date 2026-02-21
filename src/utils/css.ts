@@ -2,6 +2,16 @@
 export type VarName = `--${string}`;
 export type Fallback = string;
 export type SortOrder = 'asc' | 'desc';
+export type TshirtScale =
+  | 'none'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | 'full'
+  | `${number}xs`
+  | `${number}xl`;
 
 // CHECK IF WINDOW AND DOCUMENT EXIST
 const canReadComputedStyles = () => {
@@ -58,7 +68,7 @@ export const getAllCSSVariablesWithPrefix = <T extends VarName>(
 
 // SORT A LIST BY TSHIRT SIZE
 export const getSortedTshirtSize = (
-  list: string[],
+  list: TshirtScale[],
   order: SortOrder = 'asc',
 ): string[] => {
   const BASE_SIZE_RANK: Record<string, number> = {
@@ -70,7 +80,7 @@ export const getSortedTshirtSize = (
     xl: 500,
   };
 
-  const getRank = (size: string) => {
+  const getRank = (size: TshirtScale) => {
     const normalized = String(size).toLowerCase().trim();
 
     if (normalized === 'none') return BASE_SIZE_RANK.none;
@@ -94,9 +104,9 @@ export const getSortedTshirtSize = (
 
 // GET TSHIRT SCALE LIST
 export type ITshirtScale = VarName | VarName[];
-type TshirtScaleResult<T> = T extends VarName[] ? string[] : string;
+type TshirtScaleResult<T> = T extends VarName[] ? TshirtScale[] : TshirtScale;
 
-export const getCSSVarTshirtScale = <T extends VarName | VarName[]>(
+export const getCSSVarTshirtScale = <T extends ITshirtScale>(
   input: T,
 ): TshirtScaleResult<T> => {
   const extract = (cssVar: VarName) => {
