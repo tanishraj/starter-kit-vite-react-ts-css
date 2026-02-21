@@ -3,12 +3,12 @@
   "files": {
     "includes": [
       "src/**",
-      "!**/dist/**",
-      "!**/node_modules/**",
-      "!**/storybook-static/**",
-      "!**/coverage/**",
-      "!**/.vite/**",
-      "!**/build/**"
+      "!**/dist",
+      "!**/node_modules",
+      "!**/storybook-static",
+      "!**/coverage",
+      "!**/.vite",
+      "!**/build"
     ]
   },
   "formatter": {
