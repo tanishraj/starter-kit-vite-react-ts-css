@@ -1,25 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { getTokens, TokenSection } from './tokenUtils';
 import './tokens.css';
+import {
+  getAllCSSVariablesWithPrefix,
+  getCSSVarTshirtScale,
+  getSortedTshirtSize,
+} from '../../utils';
 
-const breakpointScale = [
-  '4xs',
-  '3xs',
-  '2xs',
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  '2xl',
-  '3xl',
-  '4xl',
-  '5xl',
-  '6xl',
-  '7xl',
-] as const;
+const breakpointsCSSVars = getAllCSSVariablesWithPrefix('--breakpoint');
+const breakpointScaleFromCSS = getCSSVarTshirtScale(breakpointsCSSVars);
+const sortedBreakpointsScale = getSortedTshirtSize(breakpointScaleFromCSS);
 
-const breakpointTokenNames = breakpointScale.map(
+const breakpointTokenNames = sortedBreakpointsScale.map(
   (size) => `--breakpoint-${size}`,
 );
 

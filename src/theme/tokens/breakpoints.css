@@ -1,7 +1,7 @@
 /* BREAKPOINTS (T-SHIRT SCALE) */
 :root {
   --breakpoint-4xs: 20rem; /* 320px */
-  --breakpoint-3xs: 23.4375rem; /* 375px */
+  --breakpoint-3xs: 24rem; /* 384px */
   --breakpoint-2xs: 30rem; /* 480px */
   --breakpoint-xs: 36rem; /* 576px */
   --breakpoint-sm: 48rem; /* 768px */

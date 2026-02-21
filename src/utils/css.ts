@@ -1,3 +1,8 @@
+// VARNAME TYPE
+export type VarName = `--${string}`;
+export type Fallback = string;
+export type SortOrder = 'asc' | 'desc';
+
 // CHECK IF WINDOW AND DOCUMENT EXIST
 const canReadComputedStyles = () => {
   return typeof window !== 'undefined' && typeof document !== 'undefined';
@@ -5,8 +10,8 @@ const canReadComputedStyles = () => {
 
 // GET THE CSS VARIABLE VALUE
 export const getCSSVariable = (
-  name: `--${string}`,
-  fallback: string = '',
+  name: VarName,
+  fallback: Fallback = '',
   element?: Element,
 ): string => {
   if (!canReadComputedStyles()) {
@@ -23,7 +28,7 @@ export const getCSSVariable = (
 };
 
 // CHECK IF CSS VARIABLE EXISTS
-export const hasCSSVariable = (name: `--${string}`, element?: Element) => {
+export const hasCSSVariable = (name: VarName, element?: Element): boolean => {
   if (!canReadComputedStyles()) {
     return false;
   }
@@ -35,10 +40,10 @@ export const hasCSSVariable = (name: `--${string}`, element?: Element) => {
 };
 
 // GET ALL CSS VARIABLES
-export const getAllCSSVariablesWithPrefix = (
-  prefix: `--${string}`,
+export const getAllCSSVariablesWithPrefix = <T extends VarName>(
+  prefix: T,
   element?: Element,
-) => {
+): VarName[] => {
   if (!canReadComputedStyles()) {
     return [];
   }
@@ -46,14 +51,16 @@ export const getAllCSSVariablesWithPrefix = (
   const targetElement = element ?? document.documentElement;
   const styles = window.getComputedStyle(targetElement);
 
-  return Array.from(styles).filter((name) => name.startsWith(prefix));
+  return Array.from(styles).filter((name) =>
+    name.startsWith(prefix),
+  ) as VarName[];
 };
 
 // SORT A LIST BY TSHIRT SIZE
 export const getSortedTshirtSize = (
   list: string[],
-  order: 'asc' | 'desc' = 'asc',
-) => {
+  order: SortOrder = 'asc',
+): string[] => {
   const BASE_SIZE_RANK: Record<string, number> = {
     none: 0,
     xs: 100,
@@ -86,9 +93,12 @@ export const getSortedTshirtSize = (
 };
 
 // GET TSHIRT SCALE LIST
-type VarName = `--${string}`;
-type ITshirtScaleList = VarName | VarName[];
-export const getCSSVarTshirtScale = (input: ITshirtScaleList) => {
+export type ITshirtScale = VarName | VarName[];
+type TshirtScaleResult<T> = T extends VarName[] ? string[] : string;
+
+export const getCSSVarTshirtScale = <T extends VarName | VarName[]>(
+  input: T,
+): TshirtScaleResult<T> => {
   const extract = (cssVar: VarName) => {
     const normalized = cssVar.toLowerCase().trim();
     const lastPart = normalized.split('-').at(-1) ?? '';
@@ -99,8 +109,8 @@ export const getCSSVarTshirtScale = (input: ITshirtScaleList) => {
   };
 
   if (Array.isArray(input)) {
-    return input.map(extract).filter(Boolean);
+    return input.map(extract).filter(Boolean) as TshirtScaleResult<T>;
   }
 
-  return extract(input);
+  return extract(input) as TshirtScaleResult<T>;
 };
