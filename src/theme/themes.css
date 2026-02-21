@@ -52,12 +52,6 @@
 
   --color-disabled-bg: var(--color-gray-100);
   --color-disabled-text: var(--color-gray-500);
-
-  --gradient-brand: linear-gradient(
-    135deg,
-    var(--color-brand-500) 0%,
-    var(--color-brand-700) 100%
-  );
 }
 
 /* DARK THEME */
@@ -113,10 +107,4 @@
 
   --color-disabled-bg: var(--color-gray-dark-800);
   --color-disabled-text: var(--color-gray-dark-500);
-
-  --gradient-brand: linear-gradient(
-    135deg,
-    var(--color-brand-400) 0%,
-    var(--color-brand-600) 100%
-  );
 }

@@ -1,0 +1,174 @@
+/* GRADIENT TOKENS */
+:root {
+  /* Primitive gradients */
+  --gradient-indigo: linear-gradient(
+    135deg,
+    var(--color-indigo-400) 0%,
+    var(--color-indigo-600) 100%
+  );
+  --gradient-violet: linear-gradient(
+    135deg,
+    var(--color-violet-400) 0%,
+    var(--color-violet-600) 100%
+  );
+  --gradient-purple: linear-gradient(
+    135deg,
+    var(--color-purple-400) 0%,
+    var(--color-purple-600) 100%
+  );
+  --gradient-fuchsia: linear-gradient(
+    135deg,
+    var(--color-fuchsia-400) 0%,
+    var(--color-fuchsia-600) 100%
+  );
+  --gradient-pink: linear-gradient(
+    135deg,
+    var(--color-pink-400) 0%,
+    var(--color-pink-600) 100%
+  );
+  --gradient-rose: linear-gradient(
+    135deg,
+    var(--color-rose-400) 0%,
+    var(--color-rose-600) 100%
+  );
+  --gradient-orange-dark: linear-gradient(
+    135deg,
+    var(--color-orange-dark-400) 0%,
+    var(--color-orange-dark-600) 100%
+  );
+  --gradient-orange: linear-gradient(
+    135deg,
+    var(--color-orange-400) 0%,
+    var(--color-orange-600) 100%
+  );
+  --gradient-yellow: linear-gradient(
+    135deg,
+    var(--color-yellow-400) 0%,
+    var(--color-yellow-600) 100%
+  );
+  --gradient-cool-spectrum: linear-gradient(
+    135deg,
+    var(--color-indigo-500) 0%,
+    var(--color-violet-500) 35%,
+    var(--color-purple-500) 70%,
+    var(--color-fuchsia-500) 100%
+  );
+  --gradient-warm-spectrum: linear-gradient(
+    135deg,
+    var(--color-rose-500) 0%,
+    var(--color-orange-500) 55%,
+    var(--color-yellow-500) 100%
+  );
+
+  /* Utility aliases (Untitled-style token layer) */
+  --gradient-utility-indigo: var(--gradient-indigo);
+  --gradient-utility-violet: var(--gradient-violet);
+  --gradient-utility-purple: var(--gradient-purple);
+  --gradient-utility-fuchsia: var(--gradient-fuchsia);
+  --gradient-utility-pink: var(--gradient-pink);
+  --gradient-utility-rose: var(--gradient-rose);
+  --gradient-utility-orange-dark: var(--gradient-orange-dark);
+  --gradient-utility-orange: var(--gradient-orange);
+  --gradient-utility-yellow: var(--gradient-yellow);
+  --gradient-utility-cool-spectrum: var(--gradient-cool-spectrum);
+  --gradient-utility-warm-spectrum: var(--gradient-warm-spectrum);
+}
+
+:root,
+[data-theme="light"] {
+  /* Semantic gradients */
+  --gradient-bg-brand-primary: linear-gradient(
+    135deg,
+    var(--color-indigo-500) 0%,
+    var(--color-violet-500) 45%,
+    var(--color-purple-500) 100%
+  );
+  --gradient-bg-brand-secondary: linear-gradient(
+    135deg,
+    var(--color-indigo-100) 0%,
+    var(--color-violet-100) 50%,
+    var(--color-purple-100) 100%
+  );
+  --gradient-bg-accent: var(--gradient-cool-spectrum);
+  --gradient-bg-danger: linear-gradient(
+    135deg,
+    var(--color-rose-500) 0%,
+    var(--color-error-500) 100%
+  );
+  --gradient-bg-warning: linear-gradient(
+    135deg,
+    var(--color-orange-500) 0%,
+    var(--color-yellow-500) 100%
+  );
+  --gradient-bg-success: linear-gradient(
+    135deg,
+    var(--color-teal-500) 0%,
+    var(--color-green-500) 100%
+  );
+  --gradient-bg-info: linear-gradient(
+    135deg,
+    var(--color-blue-light-500) 0%,
+    var(--color-blue-600) 100%
+  );
+
+  /* Backward-compatible names */
+  --gradient-brand: var(--gradient-bg-brand-primary);
+  --gradient-brand-soft: var(--gradient-bg-brand-secondary);
+}
+
+[data-theme="dark"] {
+  /* Semantic gradients tuned for dark surfaces */
+  --gradient-bg-brand-primary: linear-gradient(
+    135deg,
+    var(--color-indigo-400) 0%,
+    var(--color-violet-500) 50%,
+    var(--color-fuchsia-500) 100%
+  );
+  --gradient-bg-brand-secondary: linear-gradient(
+    135deg,
+    var(--color-indigo-900) 0%,
+    var(--color-violet-900) 50%,
+    var(--color-purple-900) 100%
+  );
+  --gradient-bg-accent: linear-gradient(
+    135deg,
+    var(--color-blue-dark-500) 0%,
+    var(--color-indigo-500) 55%,
+    var(--color-purple-500) 100%
+  );
+  --gradient-bg-danger: linear-gradient(
+    135deg,
+    var(--color-error-700) 0%,
+    var(--color-rose-600) 100%
+  );
+  --gradient-bg-warning: linear-gradient(
+    135deg,
+    var(--color-orange-dark-600) 0%,
+    var(--color-yellow-600) 100%
+  );
+  --gradient-bg-success: linear-gradient(
+    135deg,
+    var(--color-teal-700) 0%,
+    var(--color-green-600) 100%
+  );
+  --gradient-bg-info: linear-gradient(
+    135deg,
+    var(--color-blue-dark-600) 0%,
+    var(--color-cyan-600) 100%
+  );
+
+  /* Backward-compatible names */
+  --gradient-brand: var(--gradient-bg-brand-primary);
+  --gradient-brand-soft: var(--gradient-bg-brand-secondary);
+}
+
+:root {
+  /* Property aliases */
+  --background-image-brand: var(--gradient-bg-brand-primary);
+  --background-image-brand-soft: var(--gradient-bg-brand-secondary);
+  --background-image-accent: var(--gradient-bg-accent);
+  --background-image-danger: var(--gradient-bg-danger);
+  --background-image-warning: var(--gradient-bg-warning);
+  --background-image-success: var(--gradient-bg-success);
+  --background-image-info: var(--gradient-bg-info);
+}
