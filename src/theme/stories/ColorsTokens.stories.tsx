@@ -6,7 +6,6 @@ import {
   semanticColorGroups,
 } from './colorPalette';
 import { getTokens, getTokensByPrefix, TokenSection } from './tokenUtils';
-import './tokens.css';
 
 const meta = {
   title: 'Tokens/Colors',

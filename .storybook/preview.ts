@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/theme/global.css';
+import './storybook.css';
 
 type ThemeMode = 'light' | 'dark';
 

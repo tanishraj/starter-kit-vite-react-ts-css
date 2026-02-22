@@ -134,13 +134,15 @@ export const getGroupedColorTokenScales = (
   const colorGroup: ColorGroup = {};
 
   for (const color of colorScales) {
-    const match = color.match(/^--color-([\w-]+)-(\d+)$/);
-    if (!match) continue;
+    const match = color.match(/^--color-([\w-]+)-([\d\w]+)$/);
+    if (!match) {
+      continue;
+    }
 
     const [colorVar, colorName, scale] = match;
 
     if (!colorGroup[colorName]) colorGroup[colorName] = {};
-    colorGroup[colorName][scale] = `var(${colorVar})`;
+    colorGroup[colorName][scale] = colorVar;
   }
 
   return colorGroup;

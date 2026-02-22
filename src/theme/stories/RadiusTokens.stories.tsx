@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { getTokens, TokenSection } from './tokenUtils';
-import './tokens.css';
 import {
   getAllCSSVariablesWithPrefix,
   getCSSVarTshirtScale,
