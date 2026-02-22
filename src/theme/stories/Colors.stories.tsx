@@ -2,8 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   type ColorVar,
   getAllCSSVariablesWithPrefix,
+  getCSSVariable,
   getGroupedColorTokenScales,
   splitSemanticColors,
+  type VarName,
 } from '../../utils';
 
 const meta = {
@@ -17,7 +19,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const ColorScale: Story = {
+export const BaseColors: Story = {
   render: () => {
     const allColors = getAllCSSVariablesWithPrefix('--color');
     const { base } = splitSemanticColors(allColors as ColorVar[]);
@@ -47,7 +49,14 @@ export const ColorScale: Story = {
                                 backgroundColor: `var(${groupedColors[color][scale]})`,
                               }}
                             ></div>
-                            <div className="color-palette-label">{scale}</div>
+                            <div className="color-palette-label">
+                              {scale} [
+                              {getCSSVariable(
+                                groupedColors[color][scale] as VarName,
+                              )}
+                              ]
+                            </div>
+
                             <div className="token-value">
                               {groupedColors[color][scale]}
                             </div>

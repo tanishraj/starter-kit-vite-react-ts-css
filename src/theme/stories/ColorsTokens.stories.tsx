@@ -1,10 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import {
-  baseColorTokenNames,
-  buildPrimitivePaletteGroups,
-  ColorPaletteSection,
-  semanticColorGroups,
-} from './colorPalette';
+import { ColorPaletteSection, semanticColorGroups } from './colorPalette';
 import { getTokens, getTokensByPrefix, TokenSection } from './tokenUtils';
 
 const meta = {
@@ -17,35 +12,6 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-
-export const BaseTokens: Story = {
-  render: () => {
-    const basePaletteGroup = [
-      {
-        id: 'base',
-        label: 'Base',
-        tokens: getTokens(baseColorTokenNames).filter(
-          (token) => token.value !== '',
-        ),
-      },
-    ] as const;
-
-    const baseAndTokenGroups = [
-      ...basePaletteGroup,
-      ...buildPrimitivePaletteGroups(),
-    ];
-
-    return (
-      <div className="token-page">
-        <ColorPaletteSection
-          title="Color Tokens"
-          description="Base colors and primitive token families."
-          groups={baseAndTokenGroups}
-        />
-      </div>
-    );
-  },
-};
 
 export const SemanticColors: Story = {
   render: () => {
