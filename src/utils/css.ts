@@ -1,5 +1,7 @@
 // VARNAME TYPE
 export type VarName = `--${string}`;
+export type ColorVar = `--color-${string}-${number}`;
+export type ColorGroup = Record<string, Record<string, string>>;
 export type Fallback = string;
 export type SortOrder = 'asc' | 'desc';
 export type TshirtScale =
@@ -123,4 +125,53 @@ export const getCSSVarTshirtScale = <T extends ITshirtScale>(
   }
 
   return extract(input) as TshirtScaleResult<T>;
+};
+
+// GET COLOR TOKEN SCALES
+export const getGroupedColorTokenScales = (
+  colorScales: string[],
+): ColorGroup => {
+  const colorGroup: ColorGroup = {};
+
+  for (const color of colorScales) {
+    const match = color.match(/^--color-([\w-]+)-(\d+)$/);
+    if (!match) continue;
+
+    const [colorVar, colorName, scale] = match;
+
+    if (!colorGroup[colorName]) colorGroup[colorName] = {};
+    colorGroup[colorName][scale] = `var(${colorVar})`;
+  }
+
+  return colorGroup;
+};
+
+// GET ALL SEMANTIC COLORS OR COLOR TOKENS
+export const SEMANTIC_TOKENS = [
+  'primary',
+  'accent',
+  'border',
+  'text',
+  'bg',
+  'ring',
+  'link',
+  'disabled',
+  'success',
+  'warning',
+  'danger',
+  'info',
+];
+export const splitSemanticColors = (colorsList: ColorVar[]) => {
+  const semantic: ColorVar[] = [];
+  const base: ColorVar[] = [];
+
+  for (const color of colorsList) {
+    if (SEMANTIC_TOKENS.some((token) => color.includes(token))) {
+      semantic.push(color);
+    } else {
+      base.push(color);
+    }
+  }
+
+  return { semantic, base };
 };
