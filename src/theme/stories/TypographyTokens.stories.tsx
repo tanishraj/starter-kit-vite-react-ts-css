@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { getTokens, TokenSection } from './tokenUtils';
 import { getAllCSSVariablesWithPrefix } from '../../utils';
+
+import { getTokens, TokenSection } from './tokenUtils';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const typographyTokenNames = getAllCSSVariablesWithPrefix('--font-family');
 

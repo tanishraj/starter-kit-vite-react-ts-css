@@ -11,8 +11,7 @@ export type SpinnerColor =
   | 'neutral'
   | 'current';
 
-export interface SpinnerProps
-  extends Omit<HTMLAttributes<HTMLSpanElement>, 'children' | 'color'> {
+export interface SpinnerProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children' | 'color'> {
   size?: SpinnerSize;
   color?: SpinnerColor;
   label?: string;

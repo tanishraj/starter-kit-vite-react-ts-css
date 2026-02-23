@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Spinner } from './Spinner';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Components/Spinner',
@@ -16,15 +17,7 @@ const meta = {
     },
     color: {
       control: 'select',
-      options: [
-        'primary',
-        'accent',
-        'success',
-        'warning',
-        'danger',
-        'neutral',
-        'current',
-      ],
+      options: ['primary', 'accent', 'success', 'warning', 'danger', 'neutral', 'current'],
     },
   },
   parameters: {

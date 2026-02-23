@@ -2,18 +2,11 @@ import type { ComponentPropsWithRef, ReactNode } from 'react';
 
 export type ButtonVariant = 'solid' | 'outline' | 'soft' | 'ghost';
 
-export type ButtonColor =
-  | 'primary'
-  | 'accent'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'neutral';
+export type ButtonColor = 'primary' | 'accent' | 'success' | 'warning' | 'danger' | 'neutral';
 
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export interface ButtonProps
-  extends Omit<ComponentPropsWithRef<'button'>, 'color'> {
+export interface ButtonProps extends Omit<ComponentPropsWithRef<'button'>, 'color'> {
   variant?: ButtonVariant;
   color?: ButtonColor;
   size?: ButtonSize;

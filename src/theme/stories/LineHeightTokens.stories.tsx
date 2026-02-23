@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { getTokens, TokenSection } from './tokenUtils';
-
 import {
   getAllCSSVariablesWithPrefix,
   getCSSVarTshirtScale,
   getSortedTshirtSize,
 } from '../../utils';
 
+import { getTokens, TokenSection } from './tokenUtils';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
+
 const lineHeightCSSVars = getAllCSSVariablesWithPrefix('--line-height');
 const lineHeightScaleFromCSS = getCSSVarTshirtScale(lineHeightCSSVars);
 const sortedLineHeightScale = getSortedTshirtSize(lineHeightScaleFromCSS);
 
-const lineHeightTokenNames = sortedLineHeightScale.map(
-  (size) => `--line-height-${size}`,
-);
+const lineHeightTokenNames = sortedLineHeightScale.map((size) => `--line-height-${size}`);
 
 const meta = {
   title: 'Tokens/Line Height',

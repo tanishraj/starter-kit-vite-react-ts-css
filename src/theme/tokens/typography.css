@@ -1,18 +1,16 @@
-@import "@fontsource/ibm-plex-sans/400.css";
-@import "@fontsource/ibm-plex-sans/500.css";
-@import "@fontsource/ibm-plex-sans/600.css";
-@import "@fontsource/ibm-plex-sans/700.css";
-@import "@fontsource/jetbrains-mono/400.css";
-@import "@fontsource/jetbrains-mono/500.css";
-@import "@fontsource/jetbrains-mono/700.css";
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-sans/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/700.css';
 
 :root {
   /* FONT FAMILY */
   --font-family-sans:
-    "IBM Plex Sans", "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
-  --font-family-mono:
-    "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+    'IBM Plex Sans', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
 
   /* FONT SIZES (T-SHIRT SCALE) */
   --font-size-4xs: 0.625rem;

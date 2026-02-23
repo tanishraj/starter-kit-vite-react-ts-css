@@ -1,10 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { getTokens, TokenSection } from './tokenUtils';
 import {
   getAllCSSVariablesWithPrefix,
   getCSSVarTshirtScale,
   getSortedTshirtSize,
 } from '../../utils';
+
+import { getTokens, TokenSection } from './tokenUtils';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const shadowCSSVars = getAllCSSVariablesWithPrefix('--shadow');
 const shadowScaleFromCSS = getCSSVarTshirtScale(shadowCSSVars);

@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { getTokens, TokenSection } from './tokenUtils';
 import {
   getAllCSSVariablesWithPrefix,
   getCSSVarTshirtScale,
   getSortedTshirtSize,
 } from '../../utils';
 
+import { getTokens, TokenSection } from './tokenUtils';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 const breakpointsCSSVars = getAllCSSVariablesWithPrefix('--breakpoint');
 const breakpointScaleFromCSS = getCSSVarTshirtScale(breakpointsCSSVars);
 const sortedBreakpointsScale = getSortedTshirtSize(breakpointScaleFromCSS);
 
-const breakpointTokenNames = sortedBreakpointsScale.map(
-  (size) => `--breakpoint-${size}`,
-);
+const breakpointTokenNames = sortedBreakpointsScale.map((size) => `--breakpoint-${size}`);
 
 const meta = {
   title: 'Tokens/Breakpoints',
@@ -44,8 +44,7 @@ export const Scale: Story = {
           description="Live values from breakpoint tokens. Preview bars are proportional to the largest breakpoint."
           tokens={tokens}
           renderPreview={(token) => {
-            const ratio =
-              ratios[tokens.findIndex((item) => item.name === token.name)];
+            const ratio = ratios[tokens.findIndex((item) => item.name === token.name)];
 
             return (
               <div

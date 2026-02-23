@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ColorPaletteSection, semanticColorGroups } from './colorPalette';
 import { getTokens, getTokensByPrefix, TokenSection } from './tokenUtils';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Tokens/Colors',

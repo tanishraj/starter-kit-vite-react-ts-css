@@ -49,7 +49,7 @@
 }
 
 :root,
-[data-theme="light"] {
+[data-theme='light'] {
   --gradient-bg-brand-primary: linear-gradient(
     135deg,
     var(--color-royal-azure-500) 0%,
@@ -78,7 +78,7 @@
   --gradient-brand-soft: var(--gradient-bg-brand-secondary);
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --gradient-bg-brand-primary: linear-gradient(
     135deg,
     var(--color-royal-azure-400) 0%,

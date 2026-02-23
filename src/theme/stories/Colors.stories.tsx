@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   type ColorVar,
   getAllCSSVariablesWithPrefix,
@@ -7,6 +6,8 @@ import {
   splitSemanticColors,
   type VarName,
 } from '../../utils';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Tokens/Colors',
@@ -50,16 +51,10 @@ export const BaseColors: Story = {
                               }}
                             ></div>
                             <div className="color-palette-label">
-                              {scale} [
-                              {getCSSVariable(
-                                groupedColors[color][scale] as VarName,
-                              )}
-                              ]
+                              {scale} [{getCSSVariable(groupedColors[color][scale] as VarName)}]
                             </div>
 
-                            <div className="token-value">
-                              {groupedColors[color][scale]}
-                            </div>
+                            <div className="token-value">{groupedColors[color][scale]}</div>
                           </div>
                         );
                       })}

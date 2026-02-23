@@ -31,10 +31,7 @@ export const getCSSVariable = (
   }
 
   const targetElement = element ?? document.documentElement;
-  const value = window
-    .getComputedStyle(targetElement)
-    .getPropertyValue(name)
-    .trim();
+  const value = window.getComputedStyle(targetElement).getPropertyValue(name).trim();
 
   return value || fallback;
 };
@@ -63,16 +60,11 @@ export const getAllCSSVariablesWithPrefix = <T extends VarName>(
   const targetElement = element ?? document.documentElement;
   const styles = window.getComputedStyle(targetElement);
 
-  return Array.from(styles).filter((name) =>
-    name.startsWith(prefix),
-  ) as VarName[];
+  return Array.from(styles).filter((name) => name.startsWith(prefix)) as VarName[];
 };
 
 // SORT A LIST BY TSHIRT SIZE
-export const getSortedTshirtSize = (
-  list: TshirtScale[],
-  order: SortOrder = 'asc',
-): string[] => {
+export const getSortedTshirtSize = (list: TshirtScale[], order: SortOrder = 'asc'): string[] => {
   const BASE_SIZE_RANK: Record<string, number> = {
     none: 0,
     xs: 100,
@@ -108,9 +100,7 @@ export const getSortedTshirtSize = (
 export type ITshirtScale = VarName | VarName[];
 type TshirtScaleResult<T> = T extends VarName[] ? TshirtScale[] : TshirtScale;
 
-export const getCSSVarTshirtScale = <T extends ITshirtScale>(
-  input: T,
-): TshirtScaleResult<T> => {
+export const getCSSVarTshirtScale = <T extends ITshirtScale>(input: T): TshirtScaleResult<T> => {
   const extract = (cssVar: VarName) => {
     const normalized = cssVar.toLowerCase().trim();
     const lastPart = normalized.split('-').at(-1) ?? '';
@@ -128,9 +118,7 @@ export const getCSSVarTshirtScale = <T extends ITshirtScale>(
 };
 
 // GET COLOR TOKEN SCALES
-export const getGroupedColorTokenScales = (
-  colorScales: string[],
-): ColorGroup => {
+export const getGroupedColorTokenScales = (colorScales: string[]): ColorGroup => {
   const colorGroup: ColorGroup = {};
 
   for (const color of colorScales) {

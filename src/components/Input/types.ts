@@ -6,8 +6,7 @@ export type InputSize = 'sm' | 'md' | 'lg';
 
 export type InputTone = 'default' | 'success' | 'warning' | 'danger';
 
-export interface InputProps
-  extends Omit<ComponentPropsWithRef<'input'>, 'prefix' | 'size'> {
+export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'prefix' | 'size'> {
   label?: ReactNode;
   hint?: ReactNode;
   error?: ReactNode;

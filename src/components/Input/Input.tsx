@@ -1,11 +1,5 @@
-import {
-  type InputEvent,
-  type Ref,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react';
+import { type InputEvent, type Ref, useEffect, useId, useRef, useState } from 'react';
+
 import type { InputProps } from './types';
 import './Input.css';
 
@@ -87,10 +81,7 @@ export function Input({
       return;
     }
 
-    const descriptor = Object.getOwnPropertyDescriptor(
-      HTMLInputElement.prototype,
-      'value',
-    );
+    const descriptor = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
 
     descriptor?.set?.call(input, '');
     input.dispatchEvent(new Event('input', { bubbles: true }));
@@ -125,10 +116,7 @@ export function Input({
 
       <div className="inp__control-wrap">
         {startAdornment && (
-          <span
-            aria-hidden="true"
-            className="inp__adornment inp__adornment--start"
-          >
+          <span aria-hidden="true" className="inp__adornment inp__adornment--start">
             {startAdornment}
           </span>
         )}
@@ -163,10 +151,7 @@ export function Input({
         )}
 
         {endAdornment && (
-          <span
-            aria-hidden="true"
-            className="inp__adornment inp__adornment--end"
-          >
+          <span aria-hidden="true" className="inp__adornment inp__adornment--end">
             {endAdornment}
           </span>
         )}

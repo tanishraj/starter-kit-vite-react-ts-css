@@ -27,10 +27,7 @@ export function getTokenValue(name: string): string {
     return '';
   }
 
-  return window
-    .getComputedStyle(document.documentElement)
-    .getPropertyValue(name)
-    .trim();
+  return window.getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
 export function getTokens(names: readonly string[]): TokenEntry[] {
@@ -64,10 +61,7 @@ export function getTokensByPrefix(prefixes: readonly string[]): TokenEntry[] {
     }));
 }
 
-export function filterTokens(
-  tokens: readonly TokenEntry[],
-  matcher: RegExp,
-): TokenEntry[] {
+export function filterTokens(tokens: readonly TokenEntry[], matcher: RegExp): TokenEntry[] {
   return tokens.filter((token) => matcher.test(token.name));
 }
 
@@ -106,9 +100,7 @@ export function TokenSection({
                   </td>
                   {renderPreview ? (
                     <td>
-                      <div className="token-table-preview">
-                        {renderPreview(token)}
-                      </div>
+                      <div className="token-table-preview">{renderPreview(token)}</div>
                     </td>
                   ) : null}
                 </tr>

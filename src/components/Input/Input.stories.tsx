@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
+
 import { Input } from './Input';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Components/Input',
@@ -97,18 +99,8 @@ export const States: Story = {
       }}
     >
       <Input {...args} hint="Looks good." label="Success" tone="success" />
-      <Input
-        {...args}
-        hint="Double-check this value."
-        label="Warning"
-        tone="warning"
-      />
-      <Input
-        {...args}
-        error="This field is invalid."
-        label="Danger"
-        tone="danger"
-      />
+      <Input {...args} hint="Double-check this value." label="Warning" tone="warning" />
+      <Input {...args} error="This field is invalid." label="Danger" tone="danger" />
       <Input {...args} disabled label="Disabled" value="Read only value" />
     </div>
   ),

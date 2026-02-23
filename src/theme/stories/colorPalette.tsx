@@ -1,8 +1,6 @@
 import { getTokens } from './tokenUtils';
 
-export const colorScale = [
-  25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
-] as const;
+export const colorScale = [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
 
 export const colorFamilies = [
   'brick-ember',
@@ -193,9 +191,7 @@ export function ColorPaletteSection({
 
 export function buildPrimitivePaletteGroups(): PaletteGroup[] {
   return colorFamilies.map((family) => {
-    const familyTokenNames = colorScale.map(
-      (scale) => `--color-${family}-${scale}`,
-    );
+    const familyTokenNames = colorScale.map((scale) => `--color-${family}-${scale}`);
 
     return {
       id: family,

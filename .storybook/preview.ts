@@ -38,11 +38,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story, context) => {
-      const selectedTheme = context.globals.theme as
-        | 'light'
-        | 'dark'
-        | 'system'
-        | undefined;
+      const selectedTheme = context.globals.theme as 'light' | 'dark' | 'system' | undefined;
 
       const resolvedTheme =
         selectedTheme === 'system'

@@ -1,6 +1,6 @@
 /* LIGHT THEME */
 :root,
-[data-theme="light"] {
+[data-theme='light'] {
   color-scheme: light;
 
   --color-bg-canvas: var(--color-platinum-25);
@@ -55,7 +55,7 @@
 }
 
 /* DARK THEME */
-[data-theme="dark"] {
+[data-theme='dark'] {
   color-scheme: dark;
 
   --color-bg-canvas: var(--color-black-950);

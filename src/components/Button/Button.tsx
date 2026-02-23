@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
 import type { ButtonProps } from './types';
+import type { ReactNode } from 'react';
 import './Button.css';
 
 function cx(...values: Array<string | false | null | undefined>) {
@@ -12,10 +12,7 @@ function renderIcon(icon: ReactNode, position: 'start' | 'end') {
   }
 
   return (
-    <span
-      aria-hidden="true"
-      className={cx('btn__icon', `btn__icon--${position}`)}
-    >
+    <span aria-hidden="true" className={cx('btn__icon', `btn__icon--${position}`)}>
       {icon}
     </span>
   );
