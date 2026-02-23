@@ -40,13 +40,21 @@
     var(--color-bg-brand-secondary) 100%
   );
 
-  --gradient-bg-surface: linear-gradient(45deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  --gradient-bg-surface: linear-gradient(
+    45deg,
+    var(--color-bg-primary) 0%,
+    var(--color-bg-secondary) 100%
+  );
   --gradient-bg-surface-strong: linear-gradient(
     45deg,
     var(--color-bg-secondary) 0%,
     var(--color-bg-tertiary) 100%
   );
-  --gradient-bg-overlay: linear-gradient(45deg, var(--color-bg-overlay) 0%, var(--color-transparent) 100%);
+  --gradient-bg-overlay: linear-gradient(
+    45deg,
+    var(--color-bg-overlay) 0%,
+    var(--color-transparent) 100%
+  );
 }
 
 [data-theme='dark'] {
@@ -86,13 +94,21 @@
     var(--color-bg-brand-secondary) 100%
   );
 
-  --gradient-bg-surface: linear-gradient(45deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 100%);
+  --gradient-bg-surface: linear-gradient(
+    45deg,
+    var(--color-bg-primary) 0%,
+    var(--color-bg-tertiary) 100%
+  );
   --gradient-bg-surface-strong: linear-gradient(
     45deg,
     var(--color-bg-secondary) 0%,
     var(--color-bg-quaternary) 100%
   );
-  --gradient-bg-overlay: linear-gradient(45deg, var(--color-bg-overlay) 0%, var(--color-transparent) 100%);
+  --gradient-bg-overlay: linear-gradient(
+    45deg,
+    var(--color-bg-overlay) 0%,
+    var(--color-transparent) 100%
+  );
 }
 
 :root {
