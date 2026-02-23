@@ -1,6 +1,4 @@
-import { getSemanticColorGroups } from '../../utils';
-
-import { ColorPaletteSection } from './colorPalette';
+import { buildSemanticPaletteGroups, ColorPaletteSection } from './colorPalette';
 import { getTokensByPrefix } from './tokenUtils';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
@@ -18,11 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SemanticColors: Story = {
   render: () => {
-    const semanticByGroup = getSemanticColorGroups().map((group) => ({
-      id: group.id,
-      label: group.label,
-      tokens: group.tokens.filter((token) => token.value !== ''),
-    }));
+    const semanticByGroup = buildSemanticPaletteGroups();
 
     return (
       <div className="token-page">

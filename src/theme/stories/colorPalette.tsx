@@ -1,29 +1,4 @@
-import { getTokens } from './tokenUtils';
-
-export const colorScale = [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
-
-export const colorFamilies = [
-  'brick-ember',
-  'amber-flame',
-  'steel-blue',
-  'deep-space-blue',
-  'blue-spruce',
-  'blackberry-cream',
-  'deep-twilight',
-  'navy',
-  'navy-electric',
-  'jasmine',
-  'platinum',
-  'royal-azure',
-  'turquoise',
-  'medium-jungle',
-  'forest-green',
-  'turf-green',
-  'dark-emerald',
-  'black-forest',
-  'black',
-  'magenta-bloom',
-] as const;
+import { getSemanticColorGroups as getSemanticColorGroupsFromCSS } from '../../utils';
 
 export const baseColorTokenNames = [
   '--color-base-white',
@@ -31,79 +6,27 @@ export const baseColorTokenNames = [
   '--color-base-transparent',
 ] as const;
 
-export const semanticColorGroups = [
-  {
-    id: 'surface',
-    label: 'Surface',
-    tokenNames: [
-      '--color-background',
-      '--color-surface',
-      '--color-surface-muted',
-      '--color-surface-elevated',
-      '--color-disabled',
-    ],
-  },
-  {
-    id: 'text',
-    label: 'Text',
-    tokenNames: [
-      '--color-foreground',
-      '--color-foreground-muted',
-      '--color-foreground-subtle',
-      '--color-foreground-inverse',
-      '--color-link',
-      '--color-link-hover',
-      '--color-disabled-foreground',
-    ],
-  },
-  {
-    id: 'border',
-    label: 'Border',
-    tokenNames: ['--color-border-muted', '--color-border', '--color-border-strong', '--color-ring'],
-  },
-  {
-    id: 'primary',
-    label: 'Primary',
-    tokenNames: [
-      '--color-primary-soft',
-      '--color-primary-subtle',
-      '--color-primary',
-      '--color-primary-hover',
-      '--color-primary-strong',
-      '--color-primary-foreground',
-    ],
-  },
-  {
-    id: 'accent',
-    label: 'Accent',
-    tokenNames: [
-      '--color-accent-soft',
-      '--color-accent-subtle',
-      '--color-accent',
-      '--color-accent-hover',
-      '--color-accent-strong',
-      '--color-accent-foreground',
-    ],
-  },
-  {
-    id: 'feedback',
-    label: 'Feedback',
-    tokenNames: [
-      '--color-success',
-      '--color-warning',
-      '--color-danger',
-      '--color-info',
-      '--color-success-foreground',
-      '--color-warning-foreground',
-      '--color-danger-foreground',
-      '--color-info-foreground',
-      '--color-success-soft',
-      '--color-warning-soft',
-      '--color-danger-soft',
-      '--color-info-soft',
-    ],
-  },
-] as const;
+export type SemanticColorGroupDefinition = {
+  id: string;
+  label: string;
+  tokenNames: string[];
+};
+
+export function getSemanticColorGroups(): SemanticColorGroupDefinition[] {
+  return getSemanticColorGroupsFromCSS().map((group) => ({
+    id: group.id,
+    label: group.label,
+    tokenNames: [...group.tokenNames],
+  }));
+}
+
+export function buildSemanticPaletteGroups(): PaletteGroup[] {
+  return getSemanticColorGroupsFromCSS().map((group) => ({
+    id: group.id,
+    label: group.label,
+    tokens: group.tokens.filter((token) => token.value !== ''),
+  }));
+}
 
 export type PaletteToken = {
   name: string;
@@ -184,15 +107,3 @@ export function ColorPaletteSection({
   );
 }
 
-export function buildPrimitivePaletteGroups(): PaletteGroup[] {
-  return colorFamilies.map((family) => {
-    const familyTokenNames = colorScale.map((scale) => `--color-${family}-${scale}`);
-
-    return {
-      id: family,
-      label: toFamilyLabel(family),
-      tokens: getTokens(familyTokenNames),
-      useScaleLabel: true,
-    };
-  });
-}
