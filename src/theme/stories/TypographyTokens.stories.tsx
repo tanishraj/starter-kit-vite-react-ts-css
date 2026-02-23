@@ -35,7 +35,7 @@ export const Families: Story = {
           renderPreview={(token) => (
             <span
               style={{
-                color: 'var(--color-text-primary)',
+                color: 'var(--color-foreground)',
                 fontFamily: `var(${token.name})`,
                 fontSize: 'var(--font-size-sm)',
                 lineHeight: 'var(--line-height-md)',

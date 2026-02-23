@@ -13,8 +13,8 @@ function applyTheme(theme: ThemeMode) {
   root.setAttribute('data-theme', theme);
   root.style.colorScheme = theme;
 
-  document.body.style.backgroundColor = 'var(--color-bg-canvas)';
-  document.body.style.color = 'var(--color-text-primary)';
+  document.body.style.backgroundColor = 'var(--color-background)';
+  document.body.style.color = 'var(--color-foreground)';
   document.body.style.fontFamily = 'var(--font-family-sans)';
 }
 

@@ -1,10 +1,10 @@
 .btn {
-  --btn-bg: var(--color-primary-500);
-  --btn-bg-hover: var(--color-primary-600);
-  --btn-fg: var(--color-on-primary);
+  --btn-bg: var(--color-primary);
+  --btn-bg-hover: var(--color-primary-hover);
+  --btn-fg: var(--color-primary-foreground);
   --btn-border: transparent;
-  --btn-soft-bg: var(--color-primary-100);
-  --btn-soft-fg: var(--color-primary-700);
+  --btn-soft-bg: var(--color-primary-soft);
+  --btn-soft-fg: var(--color-primary-strong);
 
   align-items: center;
   border: 1px solid var(--btn-border);
@@ -28,13 +28,13 @@
 }
 
 .btn:focus-visible {
-  box-shadow: 0 0 0 3px var(--color-focus-ring);
+  box-shadow: 0 0 0 3px var(--color-ring);
 }
 
 .btn:disabled {
-  background: var(--color-disabled-bg);
-  border-color: var(--color-disabled-bg);
-  color: var(--color-disabled-text);
+  background: var(--color-disabled);
+  border-color: var(--color-disabled);
+  color: var(--color-disabled-foreground);
   cursor: not-allowed;
   opacity: 0.85;
 }
@@ -114,53 +114,53 @@
 }
 
 .btn--color-primary {
-  --btn-bg: var(--color-primary-500);
-  --btn-bg-hover: var(--color-primary-600);
-  --btn-fg: var(--color-on-primary);
-  --btn-soft-bg: var(--color-primary-100);
-  --btn-soft-fg: var(--color-primary-700);
+  --btn-bg: var(--color-primary);
+  --btn-bg-hover: var(--color-primary-hover);
+  --btn-fg: var(--color-primary-foreground);
+  --btn-soft-bg: var(--color-primary-soft);
+  --btn-soft-fg: var(--color-primary-strong);
 }
 
 .btn--color-accent {
-  --btn-bg: var(--color-accent-500);
-  --btn-bg-hover: var(--color-accent-600);
-  --btn-fg: var(--color-on-accent);
-  --btn-soft-bg: var(--color-accent-100);
-  --btn-soft-fg: var(--color-accent-700);
-  --btn-outline-fg: var(--color-accent-700);
-  --btn-ghost-fg: var(--color-accent-700);
+  --btn-bg: var(--color-accent);
+  --btn-bg-hover: var(--color-accent-hover);
+  --btn-fg: var(--color-accent-foreground);
+  --btn-soft-bg: var(--color-accent-soft);
+  --btn-soft-fg: var(--color-accent-strong);
+  --btn-outline-fg: var(--color-accent-strong);
+  --btn-ghost-fg: var(--color-accent-strong);
 }
 
 .btn--color-success {
-  --btn-bg: var(--color-success-500);
-  --btn-bg-hover: color-mix(in srgb, var(--color-success-500) 88%, black);
-  --btn-fg: var(--color-on-success);
+  --btn-bg: var(--color-success);
+  --btn-bg-hover: color-mix(in srgb, var(--color-success) 88%, black);
+  --btn-fg: var(--color-success-foreground);
   --btn-soft-bg: var(--color-success-soft);
-  --btn-soft-fg: var(--color-success-500);
+  --btn-soft-fg: var(--color-success);
 }
 
 .btn--color-warning {
-  --btn-bg: var(--color-warning-500);
-  --btn-bg-hover: color-mix(in srgb, var(--color-warning-500) 88%, black);
-  --btn-fg: var(--color-on-warning);
+  --btn-bg: var(--color-warning);
+  --btn-bg-hover: color-mix(in srgb, var(--color-warning) 88%, black);
+  --btn-fg: var(--color-warning-foreground);
   --btn-soft-bg: var(--color-warning-soft);
-  --btn-soft-fg: var(--color-warning-500);
+  --btn-soft-fg: var(--color-warning);
 }
 
 .btn--color-danger {
-  --btn-bg: var(--color-danger-500);
-  --btn-bg-hover: color-mix(in srgb, var(--color-danger-500) 88%, black);
-  --btn-fg: var(--color-on-danger);
+  --btn-bg: var(--color-danger);
+  --btn-bg-hover: color-mix(in srgb, var(--color-danger) 88%, black);
+  --btn-fg: var(--color-danger-foreground);
   --btn-soft-bg: var(--color-danger-soft);
-  --btn-soft-fg: var(--color-danger-500);
+  --btn-soft-fg: var(--color-danger);
 }
 
 .btn--color-neutral {
-  --btn-bg: var(--color-text-primary);
-  --btn-bg-hover: color-mix(in srgb, var(--color-text-primary) 88%, black);
-  --btn-fg: var(--color-text-inverse);
-  --btn-soft-bg: var(--color-bg-surface-2);
-  --btn-soft-fg: var(--color-text-primary);
+  --btn-bg: var(--color-foreground);
+  --btn-bg-hover: color-mix(in srgb, var(--color-foreground) 88%, black);
+  --btn-fg: var(--color-foreground-inverse);
+  --btn-soft-bg: var(--color-surface-muted);
+  --btn-soft-fg: var(--color-foreground);
 }
 
 .btn__content,

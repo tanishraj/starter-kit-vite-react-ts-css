@@ -1,5 +1,7 @@
-import { ColorPaletteSection, semanticColorGroups } from './colorPalette';
-import { getTokens, getTokensByPrefix, TokenSection } from './tokenUtils';
+import { getSemanticColorGroups } from '../../utils';
+
+import { ColorPaletteSection } from './colorPalette';
+import { getTokensByPrefix } from './tokenUtils';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -16,17 +18,17 @@ type Story = StoryObj<typeof meta>;
 
 export const SemanticColors: Story = {
   render: () => {
-    const semanticByGroup = semanticColorGroups.map((group) => ({
+    const semanticByGroup = getSemanticColorGroups().map((group) => ({
       id: group.id,
       label: group.label,
-      tokens: getTokens(group.tokenNames).filter((token) => token.value !== ''),
+      tokens: group.tokens.filter((token) => token.value !== ''),
     }));
 
     return (
       <div className="token-page">
         <ColorPaletteSection
           title="Semantic"
-          description="Theme-mapped tokens grouped by usage."
+          description="Theme-mapped semantic tokens extracted from live CSS variables."
           groups={semanticByGroup}
         />
       </div>
@@ -38,39 +40,27 @@ export const GradientColors: Story = {
   render: () => {
     const gradientTokens = getTokensByPrefix(['--gradient-']);
     const backgroundImageTokens = getTokensByPrefix(['--background-image-']);
+    const gradientGroups = [
+      {
+        id: 'gradients',
+        label: 'Gradient Tokens',
+        tokens: gradientTokens,
+      },
+      {
+        id: 'background-image-aliases',
+        label: 'Background Image Aliases',
+        tokens: backgroundImageTokens,
+      },
+    ];
 
     return (
       <div className="token-page">
-        <TokenSection
-          title="Gradient Tokens"
-          description="Live values from gradient tokens."
-          tokens={gradientTokens}
-          renderPreview={(token) => (
-            <div
-              style={{
-                backgroundImage: `var(${token.name})`,
-                borderRadius: 'var(--radius-xs)',
-                height: '44px',
-                width: '100%',
-              }}
-            />
-          )}
-        />
-
-        <TokenSection
-          title="Background Image Aliases"
-          description="Aliases intended for component surfaces and hero areas."
-          tokens={backgroundImageTokens}
-          renderPreview={(token) => (
-            <div
-              style={{
-                backgroundImage: `var(${token.name})`,
-                borderRadius: 'var(--radius-xs)',
-                height: '44px',
-                width: '100%',
-              }}
-            />
-          )}
+        <ColorPaletteSection
+          title="Gradient"
+          description="Live gradient tokens and background-image aliases."
+          groups={gradientGroups}
+          swatchKind="gradient"
+          getLabel={(tokenName) => tokenName.replace(/^--(gradient|background-image)-/, '')}
         />
       </div>
     );

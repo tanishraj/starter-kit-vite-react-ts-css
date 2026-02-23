@@ -70,9 +70,9 @@ document.documentElement.setAttribute('data-theme', 'dark');
 
 ```css
 .card {
-  background: var(--color-bg-surface);
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border-muted);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   padding: var(--space-lg);

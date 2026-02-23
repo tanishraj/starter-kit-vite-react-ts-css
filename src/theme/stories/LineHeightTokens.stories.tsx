@@ -8,7 +8,6 @@ import { getTokens, TokenSection } from './tokenUtils';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-
 const lineHeightCSSVars = getAllCSSVariablesWithPrefix('--line-height');
 const lineHeightScaleFromCSS = getCSSVarTshirtScale(lineHeightCSSVars);
 const sortedLineHeightScale = getSortedTshirtSize(lineHeightScaleFromCSS);
@@ -39,7 +38,7 @@ export const Scale: Story = {
           renderPreview={(token) => (
             <span
               style={{
-                color: 'var(--color-text-primary)',
+                color: 'var(--color-foreground)',
                 fontFamily: 'var(--font-family-sans)',
                 fontSize: 'var(--font-size-xs)',
                 lineHeight: `var(${token.name})`,

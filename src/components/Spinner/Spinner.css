@@ -6,7 +6,7 @@
   border: var(--spinner-track-width) solid currentColor;
   border-inline-end-color: transparent;
   border-radius: 9999px;
-  color: var(--color-primary-500);
+  color: var(--color-primary);
   display: inline-block;
   height: var(--spinner-size);
   vertical-align: middle;
@@ -39,27 +39,27 @@
 }
 
 .spinner--color-primary {
-  color: var(--color-primary-500);
+  color: var(--color-primary);
 }
 
 .spinner--color-accent {
-  color: var(--color-accent-500);
+  color: var(--color-accent);
 }
 
 .spinner--color-success {
-  color: var(--color-success-500);
+  color: var(--color-success);
 }
 
 .spinner--color-warning {
-  color: var(--color-warning-500);
+  color: var(--color-warning);
 }
 
 .spinner--color-danger {
-  color: var(--color-danger-500);
+  color: var(--color-danger);
 }
 
 .spinner--color-neutral {
-  color: var(--color-text-secondary);
+  color: var(--color-foreground-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {
