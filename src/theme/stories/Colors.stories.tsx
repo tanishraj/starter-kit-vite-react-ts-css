@@ -6,6 +6,7 @@ import {
   splitSemanticColors,
   type VarName,
 } from '../../utils';
+import { ColorPaletteSection, type PaletteGroup, toFamilyLabel } from './colorPalette';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -25,45 +26,36 @@ export const BaseColors: Story = {
     const allColors = getAllCSSVariablesWithPrefix('--color');
     const { base } = splitSemanticColors(allColors as ColorVar[]);
     const groupedColors = getGroupedColorTokenScales(base);
-    console.log({ groupedColors });
+    const baseColorGroups: PaletteGroup[] = Object.entries(groupedColors)
+      .sort(([a], [b]) => {
+        if (a === 'base') return -1;
+        if (b === 'base') return 1;
+        return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+      })
+      .map(([family, scaleMap]) => ({
+        id: family,
+        label: toFamilyLabel(family),
+        useScaleLabel: family !== 'base',
+        tokens: Object.values(scaleMap).map((tokenName) => ({
+          name: tokenName,
+          value: getCSSVariable(tokenName as VarName),
+        })),
+      }));
 
     return (
       <div className="token-page">
-        <section className="token-section">
-          <h3>Color Tokens</h3>
-          <p>Base colors and primitive token families.</p>
-          <div className="color-palette-list">
-            {Object.keys(groupedColors)
-              .sort((a, b) => (a === 'base' ? -1 : b.length))
-              .map((color) => {
-                const formattedColor = color.split('-').join(' ').toUpperCase();
-                return (
-                  <article key={color} className="color-palette-row">
-                    <h4>{formattedColor}</h4>
-                    <div className="color-palette-grid">
-                      {Object.keys(groupedColors[color]).map((scale) => {
-                        return (
-                          <div key={scale} className="color-palette-item">
-                            <div
-                              className="color-palette-swatch"
-                              style={{
-                                backgroundColor: `var(${groupedColors[color][scale]})`,
-                              }}
-                            ></div>
-                            <div className="color-palette-label">
-                              {scale} [{getCSSVariable(groupedColors[color][scale] as VarName)}]
-                            </div>
+        <ColorPaletteSection
+          title="Color Tokens"
+          description="Base colors and primitive token families."
+          groups={baseColorGroups}
+          getLabel={(tokenName, useScaleLabel) => {
+            if (!useScaleLabel) {
+              return tokenName.replace('--color-', '');
+            }
 
-                            <div className="token-value">{groupedColors[color][scale]}</div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </article>
-                );
-              })}
-          </div>
-        </section>
+            return tokenName.split('-').at(-1) ?? tokenName.replace('--color-', '');
+          }}
+        />
       </div>
     );
   },

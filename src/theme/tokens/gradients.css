@@ -1,125 +1,107 @@
-/* GRADIENT TOKENS */
-:root {
-  /* Primitive gradients */
-  --gradient-royal-azure: linear-gradient(
-    135deg,
-    var(--color-royal-azure-400) 0%,
-    var(--color-royal-azure-600) 100%
-  );
-  --gradient-amber-flame: linear-gradient(
-    135deg,
-    var(--color-amber-flame-400) 0%,
-    var(--color-amber-flame-600) 100%
-  );
-  --gradient-ocean: linear-gradient(
-    135deg,
-    var(--color-steel-blue-400) 0%,
-    var(--color-blue-spruce-500) 100%
-  );
-  --gradient-emerald: linear-gradient(
-    135deg,
-    var(--color-medium-jungle-400) 0%,
-    var(--color-blue-spruce-600) 100%
-  );
-  --gradient-danger: linear-gradient(
-    135deg,
-    var(--color-magenta-bloom-500) 0%,
-    var(--color-brick-ember-500) 100%
-  );
-  --gradient-twilight: linear-gradient(
-    135deg,
-    var(--color-deep-twilight-500) 0%,
-    var(--color-navy-500) 100%
-  );
-  --gradient-nebula: linear-gradient(
-    135deg,
-    var(--color-royal-azure-500) 0%,
-    var(--color-magenta-bloom-500) 50%,
-    var(--color-amber-flame-500) 100%
-  );
-
-  /* Utility aliases */
-  --gradient-utility-primary: var(--gradient-royal-azure);
-  --gradient-utility-accent: var(--gradient-amber-flame);
-  --gradient-utility-info: var(--gradient-ocean);
-  --gradient-utility-success: var(--gradient-emerald);
-  --gradient-utility-danger: var(--gradient-danger);
-  --gradient-utility-twilight: var(--gradient-twilight);
-  --gradient-utility-nebula: var(--gradient-nebula);
-}
-
+/* GRADIENT TOKENS
+   All gradients are composed from semantic theme colors so they
+   adapt automatically across light/dark.
+*/
 :root,
 [data-theme='light'] {
   --gradient-bg-brand-primary: linear-gradient(
-    135deg,
-    var(--color-royal-azure-500) 0%,
-    var(--color-navy-electric-500) 100%
+    45deg,
+    var(--color-bg-brand-primary) 0%,
+    var(--color-bg-brand-solid) 100%
   );
   --gradient-bg-brand-secondary: linear-gradient(
-    135deg,
-    var(--color-royal-azure-100) 0%,
-    var(--color-steel-blue-100) 100%
+    45deg,
+    var(--color-bg-brand-section_subtle) 0%,
+    var(--color-bg-brand-section) 100%
   );
   --gradient-bg-accent: linear-gradient(
-    135deg,
-    var(--color-amber-flame-500) 0%,
-    var(--color-jasmine-500) 100%
+    45deg,
+    var(--color-bg-brand-secondary) 0%,
+    var(--color-bg-brand-solid_hover) 100%
   );
-  --gradient-bg-danger: var(--gradient-danger);
+  --gradient-bg-danger: linear-gradient(
+    45deg,
+    var(--color-bg-error-primary) 0%,
+    var(--color-bg-error-solid) 100%
+  );
   --gradient-bg-warning: linear-gradient(
-    135deg,
-    var(--color-jasmine-500) 0%,
-    var(--color-amber-flame-500) 100%
+    45deg,
+    var(--color-bg-warning-primary) 0%,
+    var(--color-bg-warning-solid) 100%
   );
-  --gradient-bg-success: var(--gradient-emerald);
-  --gradient-bg-info: var(--gradient-ocean);
+  --gradient-bg-success: linear-gradient(
+    45deg,
+    var(--color-bg-success-primary) 0%,
+    var(--color-bg-success-solid) 100%
+  );
+  --gradient-bg-info: linear-gradient(
+    45deg,
+    var(--color-bg-secondary) 0%,
+    var(--color-bg-brand-secondary) 100%
+  );
 
-  --gradient-brand: var(--gradient-bg-brand-primary);
-  --gradient-brand-soft: var(--gradient-bg-brand-secondary);
+  --gradient-bg-surface: linear-gradient(45deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  --gradient-bg-surface-strong: linear-gradient(
+    45deg,
+    var(--color-bg-secondary) 0%,
+    var(--color-bg-tertiary) 100%
+  );
+  --gradient-bg-overlay: linear-gradient(45deg, var(--color-bg-overlay) 0%, var(--color-transparent) 100%);
 }
 
 [data-theme='dark'] {
   --gradient-bg-brand-primary: linear-gradient(
-    135deg,
-    var(--color-royal-azure-400) 0%,
-    var(--color-navy-electric-400) 100%
+    45deg,
+    var(--color-bg-brand-primary_alt) 0%,
+    var(--color-bg-brand-solid) 100%
   );
   --gradient-bg-brand-secondary: linear-gradient(
-    135deg,
-    var(--color-deep-space-blue-700) 0%,
-    var(--color-navy-700) 100%
+    45deg,
+    var(--color-bg-brand-section_subtle) 0%,
+    var(--color-bg-brand-section) 100%
   );
   --gradient-bg-accent: linear-gradient(
-    135deg,
-    var(--color-amber-flame-400) 0%,
-    var(--color-jasmine-400) 100%
+    45deg,
+    var(--color-bg-brand-secondary) 0%,
+    var(--color-bg-brand-solid_hover) 100%
   );
   --gradient-bg-danger: linear-gradient(
-    135deg,
-    var(--color-brick-ember-400) 0%,
-    var(--color-magenta-bloom-400) 100%
+    45deg,
+    var(--color-bg-error-primary) 0%,
+    var(--color-bg-error-solid_hover) 100%
   );
   --gradient-bg-warning: linear-gradient(
-    135deg,
-    var(--color-jasmine-400) 0%,
-    var(--color-amber-flame-400) 100%
+    45deg,
+    var(--color-bg-warning-primary) 0%,
+    var(--color-bg-warning-solid) 100%
   );
   --gradient-bg-success: linear-gradient(
-    135deg,
-    var(--color-medium-jungle-400) 0%,
-    var(--color-turquoise-400) 100%
+    45deg,
+    var(--color-bg-success-primary) 0%,
+    var(--color-bg-success-solid) 100%
   );
   --gradient-bg-info: linear-gradient(
-    135deg,
-    var(--color-steel-blue-400) 0%,
-    var(--color-royal-azure-400) 100%
+    45deg,
+    var(--color-bg-primary) 0%,
+    var(--color-bg-brand-secondary) 100%
   );
 
-  --gradient-brand: var(--gradient-bg-brand-primary);
-  --gradient-brand-soft: var(--gradient-bg-brand-secondary);
+  --gradient-bg-surface: linear-gradient(45deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 100%);
+  --gradient-bg-surface-strong: linear-gradient(
+    45deg,
+    var(--color-bg-secondary) 0%,
+    var(--color-bg-quaternary) 100%
+  );
+  --gradient-bg-overlay: linear-gradient(45deg, var(--color-bg-overlay) 0%, var(--color-transparent) 100%);
 }
 
 :root {
+  --gradient-brand: var(--gradient-bg-brand-primary);
+  --gradient-brand-soft: var(--gradient-bg-brand-secondary);
+  --gradient-feedback-positive: var(--gradient-bg-success);
+  --gradient-feedback-caution: var(--gradient-bg-warning);
+  --gradient-feedback-negative: var(--gradient-bg-danger);
+
   --background-image-brand: var(--gradient-bg-brand-primary);
   --background-image-brand-soft: var(--gradient-bg-brand-secondary);
   --background-image-accent: var(--gradient-bg-accent);
@@ -127,4 +109,6 @@
   --background-image-warning: var(--gradient-bg-warning);
   --background-image-success: var(--gradient-bg-success);
   --background-image-info: var(--gradient-bg-info);
+  --background-image-surface: var(--gradient-bg-surface);
+  --background-image-overlay: var(--gradient-bg-overlay);
 }

@@ -56,7 +56,8 @@ export const Scale: Story = {
               >
                 <div
                   style={{
-                    background: 'var(--color-primary)',
+                    background: 'var(--color-bg-brand-solid)',
+                    border: '1px solid var(--color-border-brand)',
                     borderRadius: 'var(--radius-2xs)',
                     height: 'var(--space-md)',
                     width: `${Math.max(ratio * 100, 4)}%`,

@@ -38,9 +38,10 @@ export const Scale: Story = {
           renderPreview={(token) => (
             <div
               style={{
-                background: 'var(--color-primary)',
+                background: 'var(--color-bg-brand-solid)',
+                border: '1px solid var(--color-border-brand)',
                 borderRadius: 'var(--radius-sm)',
-                color: 'var(--color-foreground)',
+                color: 'var(--color-text-primary_on-brand)',
                 fontSize: 'var(--font-size-xs)',
                 textAlign: 'center',
                 width: `var(${token.name})`,

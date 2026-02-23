@@ -38,7 +38,7 @@ export const Scale: Story = {
           renderPreview={(token) => (
             <span
               style={{
-                color: 'var(--color-foreground)',
+                color: 'var(--color-text-primary)',
                 fontFamily: 'var(--font-family-sans)',
                 fontSize: `var(${token.name})`,
                 lineHeight: '1.2',

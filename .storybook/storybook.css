@@ -19,22 +19,22 @@
 }
 
 .token-section h3 {
-  color: var(--color-foreground);
+  color: var(--color-text-primary);
   font-size: var(--font-size-lg);
   line-height: var(--line-height-sm);
   margin: 0;
 }
 
 .token-section p {
-  color: var(--color-foreground-subtle);
+  color: var(--color-text-tertiary);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-md);
   margin: 0;
 }
 
 .token-table-wrap {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary_alt);
+  border: 1px solid var(--color-border-primary);
   border-radius: var(--radius-md);
   overflow-x: auto;
 }
@@ -47,15 +47,15 @@
 
 .token-table th,
 .token-table td {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-primary);
   padding: var(--space-sm);
   text-align: left;
   vertical-align: middle;
 }
 
 .token-table th {
-  background: var(--color-surface-muted);
-  color: var(--color-foreground-muted);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   font-weight: 600;
   line-height: var(--line-height-sm);
@@ -76,7 +76,7 @@
 }
 
 .token-name {
-  color: var(--color-foreground);
+  color: var(--color-text-primary);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-sm);
@@ -84,7 +84,7 @@
 }
 
 .token-value {
-  color: var(--color-foreground-muted);
+  color: var(--color-text-secondary);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-2xs);
   line-height: var(--line-height-sm);
@@ -92,7 +92,7 @@
 }
 
 .token-empty {
-  color: var(--color-foreground-subtle);
+  color: var(--color-text-tertiary);
   margin: 0;
 }
 
@@ -102,8 +102,8 @@
 }
 
 .color-palette-row {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary_alt);
+  border: 1px solid var(--color-border-primary);
   border-radius: var(--radius-md);
   display: grid;
   gap: var(--space-sm);
@@ -111,7 +111,7 @@
 }
 
 .color-palette-row h4 {
-  color: var(--color-foreground);
+  color: var(--color-text-primary);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-sm);
   margin: 0;
@@ -129,14 +129,14 @@
 }
 
 .color-palette-swatch {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-primary);
   border-radius: var(--radius-xs);
   height: 36px;
   width: 100%;
 }
 
 .color-palette-label {
-  color: var(--color-foreground);
+  color: var(--color-text-primary);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-2xs);
   line-height: var(--line-height-sm);

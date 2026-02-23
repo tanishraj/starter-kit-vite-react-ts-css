@@ -1,3 +1,5 @@
+import baseColorsCss from '../theme/tokens/colors.css?raw';
+
 // VARNAME TYPE
 export type VarName = `--${string}`;
 export type ColorVar = `--color-${string}`;
@@ -46,32 +48,37 @@ const COLOR_SCALE_STEPS = new Set([
 const MIN_SCALE_STEPS_FOR_PRIMITIVE_FAMILY = 8;
 const BASE_COLOR_TOKEN_REGEX = /^--color-base-[a-z0-9-]+$/i;
 const NUMERIC_COLOR_TOKEN_REGEX = /^--color-([a-z0-9-]+)-(\d+)$/i;
+const BASE_COLOR_ALIAS_REGEX = /^--color-([a-z0-9-]+)$/i;
+const SINGLE_WORD_COLOR_ALIAS_REGEX = /^--color-[a-z0-9]+$/i;
+const PRIMITIVE_BASE_COLOR_ALIASES = new Set<ColorVar>(
+  Array.from(baseColorsCss.matchAll(/(--color-[a-z0-9-]+)\s*:/gi))
+    .map((match) => match[1] as ColorVar)
+    .filter((token) => SINGLE_WORD_COLOR_ALIAS_REGEX.test(token)),
+);
+const BASE_COLOR_ALIAS_PRIORITY = new Map(
+  ['black', 'white', 'transparent'].map((token, index) => [token, index]),
+);
 
 const SEMANTIC_GROUPS = [
   {
-    id: 'surface',
-    label: 'Surface',
-    matcher: /^--color-(background|surface|muted|disabled)/,
-  },
-  {
     id: 'text',
     label: 'Text',
-    matcher: /^--color-(foreground|link)/,
+    matcher: /^--color-text-/,
   },
   {
     id: 'border',
-    label: 'Border & Ring',
-    matcher: /^--color-(border|input|ring)/,
+    label: 'Border',
+    matcher: /^--color-border-/,
   },
   {
-    id: 'brand',
-    label: 'Brand',
-    matcher: /^--color-(primary|secondary|accent)/,
+    id: 'foreground',
+    label: 'Foreground',
+    matcher: /^--color-fg-/,
   },
   {
-    id: 'feedback',
-    label: 'Feedback',
-    matcher: /^--color-(success|warning|danger|info|destructive)/,
+    id: 'background',
+    label: 'Background',
+    matcher: /^--color-bg-/,
   },
 ] as const;
 
@@ -261,15 +268,45 @@ export const getGroupedColorTokenScales = (colorScales: string[]): ColorGroup =>
 
   for (const color of colorScales) {
     const parts = getScaleParts(color as ColorVar);
-    if (!parts) {
+    if (parts) {
+      if (!colorGroup[parts.family]) {
+        colorGroup[parts.family] = {};
+      }
+
+      colorGroup[parts.family][parts.scale] = color;
       continue;
     }
 
-    if (!colorGroup[parts.family]) {
-      colorGroup[parts.family] = {};
+    const baseAliasMatch = color.match(BASE_COLOR_ALIAS_REGEX);
+    if (!baseAliasMatch) {
+      continue;
     }
 
-    colorGroup[parts.family][parts.scale] = color;
+    const [, alias] = baseAliasMatch;
+    if (!alias || COLOR_SCALE_STEPS.has(alias)) {
+      continue;
+    }
+
+    if (!colorGroup.base) {
+      colorGroup.base = {};
+    }
+
+    colorGroup.base[alias] = color;
+  }
+
+  if (colorGroup.base) {
+    colorGroup.base = Object.fromEntries(
+      Object.entries(colorGroup.base).sort(([a], [b]) => {
+        const priorityA = BASE_COLOR_ALIAS_PRIORITY.get(a) ?? Number.MAX_SAFE_INTEGER;
+        const priorityB = BASE_COLOR_ALIAS_PRIORITY.get(b) ?? Number.MAX_SAFE_INTEGER;
+
+        if (priorityA !== priorityB) {
+          return priorityA - priorityB;
+        }
+
+        return a.localeCompare(b, undefined, nameSortOptions);
+      }),
+    );
   }
 
   return colorGroup;
@@ -299,6 +336,10 @@ export const isPrimitiveColorToken = (
   tokenName: ColorVar,
   primitiveFamilies?: ReadonlySet<string>,
 ): boolean => {
+  if (PRIMITIVE_BASE_COLOR_ALIASES.has(tokenName)) {
+    return true;
+  }
+
   if (BASE_COLOR_TOKEN_REGEX.test(tokenName)) {
     return true;
   }

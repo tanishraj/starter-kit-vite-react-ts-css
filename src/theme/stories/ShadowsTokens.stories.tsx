@@ -38,7 +38,7 @@ export const Scale: Story = {
           renderPreview={(token) => (
             <div
               style={{
-                background: 'var(--color-surface-elevated)',
+                background: 'var(--color-bg-secondary)',
                 borderRadius: 'var(--radius-sm)',
                 boxShadow: `var(${token.name})`,
                 height: '150px',
