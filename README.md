@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and Biome for linting, formatting, and import sorting.
+This template provides a minimal setup to get React working in Vite with HMR and ESLint + Prettier for linting and formatting.
 
 Currently, two official plugins are available:
 
@@ -11,12 +11,13 @@ Currently, two official plugins are available:
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Biome
+## ESLint + Prettier
 
-This project uses Biome as a single tool for linting, formatting, and import sorting.
+This project uses ESLint (flat config) for linting and Prettier for formatting.
 
 ```bash
 yarn lint
 yarn lint:fix
 yarn format
+yarn format:check
 ```

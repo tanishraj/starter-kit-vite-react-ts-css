@@ -1,0 +1,7 @@
+dist
+build
+storybook-static
+coverage
+node_modules
+.vite
+yarn.lock
