@@ -1,10 +1,10 @@
 .btn {
-  --btn-bg: var(--color-primary);
-  --btn-bg-hover: var(--color-primary-hover);
-  --btn-fg: var(--color-primary-foreground);
+  --btn-bg: var(--color-bg-brand-solid);
+  --btn-bg-hover: var(--color-bg-brand-solid_hover);
+  --btn-fg: var(--color-text-primary_on-brand);
   --btn-border: transparent;
-  --btn-soft-bg: var(--color-primary-soft);
-  --btn-soft-fg: var(--color-primary-strong);
+  --btn-soft-bg: var(--color-bg-brand-primary);
+  --btn-soft-fg: var(--color-text-brand-secondary);
 
   align-items: center;
   border: 1px solid var(--btn-border);
@@ -28,13 +28,13 @@
 }
 
 .btn:focus-visible {
-  box-shadow: 0 0 0 3px var(--color-ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-border-brand) 35%, transparent);
 }
 
 .btn:disabled {
-  background: var(--color-disabled);
-  border-color: var(--color-disabled);
-  color: var(--color-disabled-foreground);
+  background: var(--color-bg-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
   cursor: not-allowed;
   opacity: 0.85;
 }
@@ -114,53 +114,53 @@
 }
 
 .btn--color-primary {
-  --btn-bg: var(--color-primary);
-  --btn-bg-hover: var(--color-primary-hover);
-  --btn-fg: var(--color-primary-foreground);
-  --btn-soft-bg: var(--color-primary-soft);
-  --btn-soft-fg: var(--color-primary-strong);
+  --btn-bg: var(--color-bg-brand-solid);
+  --btn-bg-hover: var(--color-bg-brand-solid_hover);
+  --btn-fg: var(--color-text-primary_on-brand);
+  --btn-soft-bg: var(--color-bg-brand-primary);
+  --btn-soft-fg: var(--color-text-brand-secondary);
 }
 
 .btn--color-accent {
-  --btn-bg: var(--color-accent);
-  --btn-bg-hover: var(--color-accent-hover);
-  --btn-fg: var(--color-accent-foreground);
-  --btn-soft-bg: var(--color-accent-soft);
-  --btn-soft-fg: var(--color-accent-strong);
-  --btn-outline-fg: var(--color-accent-strong);
-  --btn-ghost-fg: var(--color-accent-strong);
+  --btn-bg: var(--color-bg-brand-secondary);
+  --btn-bg-hover: var(--color-bg-brand-solid);
+  --btn-fg: var(--color-text-brand-primary);
+  --btn-soft-bg: var(--color-bg-brand-primary);
+  --btn-soft-fg: var(--color-text-brand-secondary);
+  --btn-outline-fg: var(--color-fg-brand-primary);
+  --btn-ghost-fg: var(--color-fg-brand-primary);
 }
 
 .btn--color-success {
-  --btn-bg: var(--color-success);
-  --btn-bg-hover: color-mix(in srgb, var(--color-success) 88%, black);
-  --btn-fg: var(--color-success-foreground);
-  --btn-soft-bg: var(--color-success-soft);
-  --btn-soft-fg: var(--color-success);
+  --btn-bg: var(--color-bg-success-solid);
+  --btn-bg-hover: color-mix(in srgb, var(--color-bg-success-solid) 88%, black);
+  --btn-fg: var(--color-text-white);
+  --btn-soft-bg: var(--color-bg-success-primary);
+  --btn-soft-fg: var(--color-fg-success-primary);
 }
 
 .btn--color-warning {
-  --btn-bg: var(--color-warning);
-  --btn-bg-hover: color-mix(in srgb, var(--color-warning) 88%, black);
-  --btn-fg: var(--color-warning-foreground);
-  --btn-soft-bg: var(--color-warning-soft);
-  --btn-soft-fg: var(--color-warning);
+  --btn-bg: var(--color-bg-warning-solid);
+  --btn-bg-hover: color-mix(in srgb, var(--color-bg-warning-solid) 88%, black);
+  --btn-fg: var(--color-text-white);
+  --btn-soft-bg: var(--color-bg-warning-primary);
+  --btn-soft-fg: var(--color-fg-warning-primary);
 }
 
 .btn--color-danger {
-  --btn-bg: var(--color-danger);
-  --btn-bg-hover: color-mix(in srgb, var(--color-danger) 88%, black);
-  --btn-fg: var(--color-danger-foreground);
-  --btn-soft-bg: var(--color-danger-soft);
-  --btn-soft-fg: var(--color-danger);
+  --btn-bg: var(--color-bg-error-solid);
+  --btn-bg-hover: var(--color-bg-error-solid_hover);
+  --btn-fg: var(--color-text-white);
+  --btn-soft-bg: var(--color-bg-error-primary);
+  --btn-soft-fg: var(--color-fg-error-primary);
 }
 
 .btn--color-neutral {
-  --btn-bg: var(--color-foreground);
-  --btn-bg-hover: color-mix(in srgb, var(--color-foreground) 88%, black);
-  --btn-fg: var(--color-foreground-inverse);
-  --btn-soft-bg: var(--color-surface-muted);
-  --btn-soft-fg: var(--color-foreground);
+  --btn-bg: var(--color-bg-primary-solid);
+  --btn-bg-hover: color-mix(in srgb, var(--color-bg-primary-solid) 88%, black);
+  --btn-fg: var(--color-text-white);
+  --btn-soft-bg: var(--color-bg-secondary);
+  --btn-soft-fg: var(--color-text-primary);
 }
 
 .btn__content,

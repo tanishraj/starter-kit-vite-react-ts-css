@@ -1,12 +1,12 @@
 .inp {
-  --inp-bg: var(--color-surface);
-  --inp-border: var(--color-border);
-  --inp-border-hover: var(--color-border-strong);
-  --inp-ring: var(--color-ring);
-  --inp-text: var(--color-foreground);
-  --inp-placeholder: var(--color-foreground-subtle);
-  --inp-muted: var(--color-foreground-muted);
-  --inp-message: var(--color-foreground-subtle);
+  --inp-bg: var(--color-bg-primary);
+  --inp-border: var(--color-border-primary);
+  --inp-border-hover: var(--color-border-brand_alt);
+  --inp-ring: var(--color-border-brand);
+  --inp-text: var(--color-text-primary);
+  --inp-placeholder: var(--color-text-placeholder);
+  --inp-muted: var(--color-text-tertiary);
+  --inp-message: var(--color-text-tertiary);
   --inp-height: 2.75rem;
   --inp-padding-x: var(--space-md);
   --inp-font-size: var(--font-size-md);
@@ -21,8 +21,8 @@
 }
 
 .inp--soft {
-  --inp-bg: var(--color-surface-muted);
-  --inp-border: var(--color-border-muted);
+  --inp-bg: var(--color-bg-secondary);
+  --inp-border: var(--color-border-secondary);
 }
 
 .inp--sm {
@@ -47,29 +47,29 @@
 }
 
 .inp--tone-success {
-  --inp-border: var(--color-success);
-  --inp-border-hover: var(--color-success);
-  --inp-ring: var(--color-success);
-  --inp-message: var(--color-success);
+  --inp-border: var(--color-fg-success-primary);
+  --inp-border-hover: var(--color-fg-success-primary);
+  --inp-ring: var(--color-fg-success-primary);
+  --inp-message: var(--color-text-success-primary);
 }
 
 .inp--tone-warning {
-  --inp-border: var(--color-warning);
-  --inp-border-hover: var(--color-warning);
-  --inp-ring: var(--color-warning);
-  --inp-message: var(--color-warning);
+  --inp-border: var(--color-fg-warning-primary);
+  --inp-border-hover: var(--color-fg-warning-primary);
+  --inp-ring: var(--color-fg-warning-primary);
+  --inp-message: var(--color-text-warning-primary);
 }
 
 .inp--tone-danger {
-  --inp-border: var(--color-danger);
-  --inp-border-hover: var(--color-danger);
-  --inp-ring: var(--color-danger);
-  --inp-message: var(--color-danger);
+  --inp-border: var(--color-border-error);
+  --inp-border-hover: var(--color-border-error);
+  --inp-ring: var(--color-border-error);
+  --inp-message: var(--color-text-error-primary);
 }
 
 .inp__label {
   align-items: center;
-  color: var(--color-foreground-muted);
+  color: var(--color-text-secondary);
   display: inline-flex;
   font-size: var(--font-size-sm);
   font-weight: 600;
@@ -78,7 +78,7 @@
 }
 
 .inp__required {
-  color: var(--color-danger);
+  color: var(--color-text-error-primary);
 }
 
 .inp__control-wrap {
@@ -156,21 +156,21 @@
 }
 
 .inp__message--error {
-  color: var(--color-danger);
+  color: var(--color-text-error-primary);
 }
 
 .inp--disabled .inp__control-wrap {
-  background: var(--color-disabled);
-  border-color: var(--color-disabled);
+  background: var(--color-bg-disabled);
+  border-color: var(--color-border-disabled);
 }
 
 .inp--disabled .inp__control,
 .inp--disabled .inp__adornment,
 .inp--disabled .inp__clear {
-  color: var(--color-disabled-foreground);
+  color: var(--color-text-disabled);
   cursor: not-allowed;
 }
 
 .inp--disabled .inp__control::placeholder {
-  color: var(--color-disabled-foreground);
+  color: var(--color-text-disabled);
 }

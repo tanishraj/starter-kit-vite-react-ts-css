@@ -6,7 +6,7 @@
   border: var(--spinner-track-width) solid currentColor;
   border-inline-end-color: transparent;
   border-radius: 9999px;
-  color: var(--color-primary);
+  color: var(--color-fg-brand-primary);
   display: inline-block;
   height: var(--spinner-size);
   vertical-align: middle;
@@ -39,27 +39,27 @@
 }
 
 .spinner--color-primary {
-  color: var(--color-primary);
+  color: var(--color-fg-brand-primary);
 }
 
 .spinner--color-accent {
-  color: var(--color-accent);
+  color: var(--color-fg-brand-secondary);
 }
 
 .spinner--color-success {
-  color: var(--color-success);
+  color: var(--color-fg-success-primary);
 }
 
 .spinner--color-warning {
-  color: var(--color-warning);
+  color: var(--color-fg-warning-primary);
 }
 
 .spinner--color-danger {
-  color: var(--color-danger);
+  color: var(--color-fg-error-primary);
 }
 
 .spinner--color-neutral {
-  color: var(--color-foreground-muted);
+  color: var(--color-fg-tertiary);
 }
 
 @media (prefers-reduced-motion: reduce) {
