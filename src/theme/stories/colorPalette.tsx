@@ -1,11 +1,5 @@
 import { getSemanticColorGroups as getSemanticColorGroupsFromCSS } from '../../utils';
 
-export const baseColorTokenNames = [
-  '--color-base-white',
-  '--color-base-black',
-  '--color-base-transparent',
-] as const;
-
 export type SemanticColorGroupDefinition = {
   id: string;
   label: string;
