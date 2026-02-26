@@ -1,0 +1,70 @@
+.icon {
+  color: currentColor;
+  display: inline-block;
+  flex-shrink: 0;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.icon > svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.icon--xs {
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.icon--sm {
+  height: 1rem;
+  width: 1rem;
+}
+
+.icon--md {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.icon--lg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.icon--xl {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.icon--color-primary {
+  color: var(--color-fg-primary);
+}
+
+.icon--color-secondary {
+  color: var(--color-fg-secondary);
+}
+
+.icon--color-tertiary {
+  color: var(--color-fg-tertiary);
+}
+
+.icon--color-quaternary {
+  color: var(--color-fg-quaternary);
+}
+
+.icon--color-brand {
+  color: var(--color-fg-brand-primary);
+}
+
+.icon--color-success {
+  color: var(--color-fg-success-primary);
+}
+
+.icon--color-warning {
+  color: var(--color-fg-warning-primary);
+}
+
+.icon--color-danger {
+  color: var(--color-fg-error-primary);
+}
