@@ -1,0 +1,116 @@
+.divider {
+  --divider-thickness: 1px;
+  --divider-color: var(--color-border-primary);
+
+  background-color: var(--divider-color);
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.divider--horizontal {
+  height: var(--divider-thickness);
+  width: 100%;
+}
+
+.divider--vertical {
+  height: 100%;
+  width: var(--divider-thickness);
+}
+
+.divider--solid {
+  background-image: none;
+}
+
+.divider--dashed.divider--horizontal {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--divider-color) 0 0.5rem,
+    transparent 0.5rem 0.875rem
+  );
+}
+
+.divider--dotted.divider--horizontal {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--divider-color) 0 0.125rem,
+    transparent 0.125rem 0.375rem
+  );
+}
+
+.divider--dashed.divider--vertical {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--divider-color) 0 0.5rem,
+    transparent 0.5rem 0.875rem
+  );
+}
+
+.divider--dotted.divider--vertical {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--divider-color) 0 0.125rem,
+    transparent 0.125rem 0.375rem
+  );
+}
+
+.divider--inset-sm.divider--horizontal {
+  margin-inline: var(--space-sm);
+  width: auto;
+}
+
+.divider--inset-md.divider--horizontal {
+  margin-inline: var(--space-md);
+  width: auto;
+}
+
+.divider--inset-lg.divider--horizontal {
+  margin-inline: var(--space-lg);
+  width: auto;
+}
+
+.divider--inset-sm.divider--vertical {
+  height: auto;
+  margin-block: var(--space-sm);
+}
+
+.divider--inset-md.divider--vertical {
+  height: auto;
+  margin-block: var(--space-md);
+}
+
+.divider--inset-lg.divider--vertical {
+  height: auto;
+  margin-block: var(--space-lg);
+}
+
+.divider--color-primary {
+  --divider-color: var(--color-border-primary);
+}
+
+.divider--color-secondary {
+  --divider-color: var(--color-border-secondary);
+}
+
+.divider--color-tertiary {
+  --divider-color: var(--color-border-tertiary);
+}
+
+.divider--color-brand {
+  --divider-color: var(--color-border-brand);
+}
+
+.divider--color-success {
+  --divider-color: var(--color-fg-success-primary);
+}
+
+.divider--color-warning {
+  --divider-color: var(--color-fg-warning-primary);
+}
+
+.divider--color-danger {
+  --divider-color: var(--color-fg-error-primary);
+}
