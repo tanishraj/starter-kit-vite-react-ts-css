@@ -16,8 +16,7 @@
     "format:check": "prettier . --check",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "sync:icons:lucide": "node scripts/sync-lucide-icons.mjs"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans": "^5.2.8",
@@ -54,7 +53,6 @@
     "eslint-plugin-storybook": "^10.2.10",
     "globals": "^17.3.0",
     "jsdom": "^28.1.0",
-    "lucide-static": "^0.575.0",
     "playwright": "^1.58.2",
     "prettier": "^3.8.1",
     "storybook": "^10.2.10",
