@@ -1,3 +1,4 @@
+import { ColorSwatch } from '../../components/ColorSwatch';
 import { getSemanticColorGroups as getSemanticColorGroupsFromCSS } from '../../utils';
 
 export type SemanticColorGroupDefinition = {
@@ -74,24 +75,18 @@ export function ColorPaletteSection({
             <h4>{group.label}</h4>
             <div className="color-palette-grid">
               {group.tokens.map((token) => (
-                <div className="color-palette-item" key={token.name}>
-                  <div
-                    className="color-palette-swatch"
-                    style={
-                      swatchKind === 'gradient'
-                        ? { backgroundImage: `var(${token.name})` }
-                        : { backgroundColor: `var(${token.name})` }
-                    }
-                  />
-                  <span className="color-palette-label">
-                    {getLabel
+                <ColorSwatch
+                  key={token.name}
+                  label={
+                    getLabel
                       ? getLabel(token.name, group.useScaleLabel)
                       : group.useScaleLabel
                         ? getTokenScale(token.name)
-                        : getTokenDisplayName(token.name)}
-                  </span>
-                  <code className="token-value">{token.value}</code>
-                </div>
+                        : getTokenDisplayName(token.name)
+                  }
+                  swatchType={swatchKind}
+                  token={token}
+                />
               ))}
             </div>
           </article>

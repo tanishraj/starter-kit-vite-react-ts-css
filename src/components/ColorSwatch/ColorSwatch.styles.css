@@ -1,0 +1,18 @@
+.color-palette-item {
+  display: grid;
+  gap: var(--space-3xs);
+}
+
+.color-palette-swatch {
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-xs);
+  height: 36px;
+  width: 100%;
+}
+
+.color-palette-label {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-2xs);
+  line-height: var(--line-height-sm);
+}
