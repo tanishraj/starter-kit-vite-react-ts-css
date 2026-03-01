@@ -1,6 +1,7 @@
-import { getAllCSSVariablesWithPrefix } from '../../utils';
+import { TokenTable } from '../../components/TokenTable';
+import { getAllCSSVariablesWithPrefix, getTokens } from '../../utils';
 
-import { getTokens, TokenSection } from './tokenUtils';
+import { createTokenTableColumns } from './tokenTableColumns';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -28,22 +29,26 @@ export const Families: Story = {
 
     return (
       <div className="token-page">
-        <TokenSection
-          title="Font Families"
+        <TokenTable
+          columns={createTokenTableColumns({
+            renderPreview: (token) => (
+              <span
+                style={{
+                  color: 'var(--color-text-primary)',
+                  fontFamily: `var(${token.name})`,
+                  fontSize: 'var(--font-size-sm)',
+                  lineHeight: 'var(--line-height-md)',
+                }}
+              >
+                {sampleByToken[token.name as keyof typeof sampleByToken]}
+              </span>
+            ),
+          })}
           description="Live values from typography tokens."
-          tokens={tokens}
-          renderPreview={(token) => (
-            <span
-              style={{
-                color: 'var(--color-text-primary)',
-                fontFamily: `var(${token.name})`,
-                fontSize: 'var(--font-size-sm)',
-                lineHeight: 'var(--line-height-md)',
-              }}
-            >
-              {sampleByToken[token.name as keyof typeof sampleByToken]}
-            </span>
-          )}
+          emptyMessage="No matching tokens found."
+          getRowKey={(token) => token.name}
+          rows={tokens}
+          title="Font Families"
         />
       </div>
     );

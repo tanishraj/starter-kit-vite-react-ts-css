@@ -20,6 +20,10 @@ export type SemanticColorGroup = {
   tokenNames: ColorVar[];
   tokens: SemanticColorToken[];
 };
+export type TokenEntry = {
+  name: string;
+  value: string;
+};
 export type TshirtScale =
   | 'none'
   | 'xs'
@@ -181,6 +185,13 @@ export const getCSSVariable = (
   return value || fallback;
 };
 
+export const getTokens = (names: readonly VarName[], element?: Element): TokenEntry[] => {
+  return names.map((name) => ({
+    name,
+    value: getCSSVariable(name, '', element),
+  }));
+};
+
 // CHECK IF CSS VARIABLE EXISTS
 export const hasCSSVariable = (name: VarName, element?: Element): boolean => {
   if (!canReadComputedStyles()) {
@@ -206,6 +217,32 @@ export const getAllCSSVariablesWithPrefix = <T extends VarName>(
   const styles = window.getComputedStyle(targetElement);
 
   return sortTokenNames(Array.from(styles).filter((name) => name.startsWith(prefix))) as VarName[];
+};
+
+export const getTokensByPrefix = (
+  prefixes: readonly VarName[],
+  element?: Element,
+): TokenEntry[] => {
+  if (!canReadComputedStyles()) {
+    return [];
+  }
+
+  const targetElement = element ?? document.documentElement;
+  const styles = window.getComputedStyle(targetElement);
+  const names = new Set<string>();
+
+  for (let index = 0; index < styles.length; index += 1) {
+    const propertyName = styles.item(index);
+
+    if (prefixes.some((prefix) => propertyName.startsWith(prefix))) {
+      names.add(propertyName);
+    }
+  }
+
+  return sortTokenNames([...names]).map((name) => ({
+    name,
+    value: styles.getPropertyValue(name).trim(),
+  }));
 };
 
 // SORT A LIST BY TSHIRT SIZE

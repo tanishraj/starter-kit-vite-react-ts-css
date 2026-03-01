@@ -1,10 +1,12 @@
+import { TokenTable } from '../../components/TokenTable';
 import {
   getAllCSSVariablesWithPrefix,
   getCSSVarTshirtScale,
+  getTokens,
   getSortedTshirtSize,
 } from '../../utils';
 
-import { getTokens, TokenSection } from './tokenUtils';
+import { createTokenTableColumns } from './tokenTableColumns';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -31,23 +33,27 @@ export const Scale: Story = {
 
     return (
       <div className="token-page">
-        <TokenSection
-          title="Line Height Scale"
+        <TokenTable
+          columns={createTokenTableColumns({
+            renderPreview: (token) => (
+              <span
+                style={{
+                  color: 'var(--color-text-primary)',
+                  fontFamily: 'var(--font-family-sans)',
+                  fontSize: 'var(--font-size-xs)',
+                  lineHeight: `var(${token.name})`,
+                  maxWidth: '14ch',
+                }}
+              >
+                Design systems scale with clear rhythm.
+              </span>
+            ),
+          })}
           description="Live values from line-height tokens."
-          tokens={tokens}
-          renderPreview={(token) => (
-            <span
-              style={{
-                color: 'var(--color-text-primary)',
-                fontFamily: 'var(--font-family-sans)',
-                fontSize: 'var(--font-size-xs)',
-                lineHeight: `var(${token.name})`,
-                maxWidth: '14ch',
-              }}
-            >
-              Design systems scale with clear rhythm.
-            </span>
-          )}
+          emptyMessage="No matching tokens found."
+          getRowKey={(token) => token.name}
+          rows={tokens}
+          title="Line Height Scale"
         />
       </div>
     );

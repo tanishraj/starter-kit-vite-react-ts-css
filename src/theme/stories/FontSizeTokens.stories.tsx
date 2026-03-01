@@ -1,10 +1,12 @@
+import { TokenTable } from '../../components/TokenTable';
 import {
   getAllCSSVariablesWithPrefix,
   getCSSVarTshirtScale,
+  getTokens,
   getSortedTshirtSize,
 } from '../../utils';
 
-import { getTokens, TokenSection } from './tokenUtils';
+import { createTokenTableColumns } from './tokenTableColumns';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -31,22 +33,26 @@ export const Scale: Story = {
 
     return (
       <div className="token-page">
-        <TokenSection
-          title="Font Size Scale"
+        <TokenTable
+          columns={createTokenTableColumns({
+            renderPreview: (token) => (
+              <span
+                style={{
+                  color: 'var(--color-text-primary)',
+                  fontFamily: 'var(--font-family-sans)',
+                  fontSize: `var(${token.name})`,
+                  lineHeight: '1.2',
+                }}
+              >
+                Ag
+              </span>
+            ),
+          })}
           description="Live values from font-size tokens."
-          tokens={tokens}
-          renderPreview={(token) => (
-            <span
-              style={{
-                color: 'var(--color-text-primary)',
-                fontFamily: 'var(--font-family-sans)',
-                fontSize: `var(${token.name})`,
-                lineHeight: '1.2',
-              }}
-            >
-              Ag
-            </span>
-          )}
+          emptyMessage="No matching tokens found."
+          getRowKey={(token) => token.name}
+          rows={tokens}
+          title="Font Size Scale"
         />
       </div>
     );

@@ -1,10 +1,12 @@
+import { TokenTable } from '../../components/TokenTable';
 import {
   getAllCSSVariablesWithPrefix,
   getCSSVarTshirtScale,
+  getTokens,
   getSortedTshirtSize,
 } from '../../utils';
 
-import { getTokens, TokenSection } from './tokenUtils';
+import { createTokenTableColumns } from './tokenTableColumns';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -39,33 +41,37 @@ export const Scale: Story = {
 
     return (
       <div className="token-page">
-        <TokenSection
-          title="Breakpoint Scale"
-          description="Live values from breakpoint tokens. Preview bars are proportional to the largest breakpoint."
-          tokens={tokens}
-          renderPreview={(token) => {
-            const ratio = ratios[tokens.findIndex((item) => item.name === token.name)];
+        <TokenTable
+          columns={createTokenTableColumns({
+            renderPreview: (token) => {
+              const ratio = ratios[tokens.findIndex((item) => item.name === token.name)];
 
-            return (
-              <div
-                style={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  width: '100%',
-                }}
-              >
+              return (
                 <div
                   style={{
-                    background: 'var(--color-bg-brand-solid)',
-                    border: '1px solid var(--color-border-brand)',
-                    borderRadius: 'var(--radius-2xs)',
-                    height: 'var(--space-md)',
-                    width: `${Math.max(ratio * 100, 4)}%`,
+                    alignItems: 'center',
+                    display: 'flex',
+                    width: '100%',
                   }}
-                />
-              </div>
-            );
-          }}
+                >
+                  <div
+                    style={{
+                      background: 'var(--color-bg-brand-solid)',
+                      border: '1px solid var(--color-border-brand)',
+                      borderRadius: 'var(--radius-2xs)',
+                      height: 'var(--space-md)',
+                      width: `${Math.max(ratio * 100, 4)}%`,
+                    }}
+                  />
+                </div>
+              );
+            },
+          })}
+          description="Live values from breakpoint tokens. Preview bars are proportional to the largest breakpoint."
+          emptyMessage="No matching tokens found."
+          getRowKey={(token) => token.name}
+          rows={tokens}
+          title="Breakpoint Scale"
         />
       </div>
     );

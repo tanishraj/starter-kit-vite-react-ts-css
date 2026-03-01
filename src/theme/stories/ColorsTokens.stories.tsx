@@ -1,5 +1,6 @@
+import { getTokensByPrefix } from '../../utils';
+
 import { buildSemanticPaletteGroups, ColorPaletteSection } from './colorPalette';
-import { getTokensByPrefix } from './tokenUtils';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
