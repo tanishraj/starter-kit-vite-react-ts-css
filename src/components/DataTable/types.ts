@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type TokenTableColumn<Row> = {
+export type DataTableColumn<Row> = {
   id: string;
   header: ReactNode;
   renderCell: (row: Row) => ReactNode;
@@ -8,10 +8,10 @@ export type TokenTableColumn<Row> = {
   cellClassName?: string;
 };
 
-export type TokenTableProps<Row> = {
+export type DataTableProps<Row> = {
   title?: ReactNode;
   description?: ReactNode;
-  columns: readonly TokenTableColumn<Row>[];
+  columns: readonly DataTableColumn<Row>[];
   rows: readonly Row[];
   getRowKey: (row: Row, index: number) => string;
   emptyMessage?: ReactNode;

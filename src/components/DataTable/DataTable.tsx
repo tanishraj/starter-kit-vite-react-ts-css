@@ -1,14 +1,14 @@
 import { useId } from 'react';
 
-import type { TokenTableProps } from './types';
+import type { DataTableProps } from './types';
 
-import './TokenTable.css';
+import './DataTable.css';
 
 function cx(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(' ');
 }
 
-export function TokenTable<Row>({
+export function DataTable<Row>({
   title,
   description,
   columns,
@@ -17,38 +17,38 @@ export function TokenTable<Row>({
   emptyMessage = 'No data available.',
   tableLabel,
   className,
-}: TokenTableProps<Row>) {
+}: DataTableProps<Row>) {
   const reactId = useId().replaceAll(':', '');
-  const titleId = title ? `token-table-title-${reactId}` : undefined;
-  const descriptionId = description ? `token-table-description-${reactId}` : undefined;
+  const titleId = title ? `data-table-title-${reactId}` : undefined;
+  const descriptionId = description ? `data-table-description-${reactId}` : undefined;
   const ariaLabel = !titleId ? tableLabel : undefined;
 
   return (
-    <section className={cx('token-table-section', className)}>
+    <section className={cx('data-table', className)}>
       {title ? (
-        <h3 className="token-table-section__title" id={titleId}>
+        <h3 className="data-table__title" id={titleId}>
           {title}
         </h3>
       ) : null}
       {description ? (
-        <p className="token-table-section__description" id={descriptionId}>
+        <p className="data-table__description" id={descriptionId}>
           {description}
         </p>
       ) : null}
 
       {rows.length > 0 ? (
-        <div className="token-table-section__wrap">
+        <div className="data-table__wrap">
           <table
             aria-describedby={descriptionId}
             aria-label={ariaLabel}
             aria-labelledby={titleId}
-            className="token-table-section__table"
+            className="data-table__table"
           >
             <thead>
               <tr>
                 {columns.map((column) => (
                   <th
-                    className={cx('token-table-section__header-cell', column.headerClassName)}
+                    className={cx('data-table__header-cell', column.headerClassName)}
                     key={column.id}
                     scope="col"
                   >
@@ -61,10 +61,7 @@ export function TokenTable<Row>({
               {rows.map((row, index) => (
                 <tr key={getRowKey(row, index)}>
                   {columns.map((column) => (
-                    <td
-                      className={cx('token-table-section__cell', column.cellClassName)}
-                      key={column.id}
-                    >
+                    <td className={cx('data-table__cell', column.cellClassName)} key={column.id}>
                       {column.renderCell(row)}
                     </td>
                   ))}
@@ -74,7 +71,7 @@ export function TokenTable<Row>({
           </table>
         </div>
       ) : (
-        <p className="token-table-section__empty">{emptyMessage}</p>
+        <p className="data-table__empty">{emptyMessage}</p>
       )}
     </section>
   );

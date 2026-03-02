@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --pretty false",
+    "typecheck:watch": "tsc -b --watch --pretty false",
     "test": "vitest --project unit",
     "test:watch": "vitest --project unit --watch",
     "test:coverage": "vitest --project unit --coverage",
-    "lint": "eslint .",
+    "lint": "npm run typecheck && eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",

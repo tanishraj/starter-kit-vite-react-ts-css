@@ -1,7 +1,8 @@
 import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import { TokenTable } from './TokenTable';
+import { DataTable } from './DataTable';
+import { useColumnDef } from './useColumnDef';
 
 type ExampleRow = {
   id: string;
@@ -9,31 +10,40 @@ type ExampleRow = {
   role: string;
 };
 
-const columns = [
-  {
-    id: 'name',
-    header: 'Name',
-    renderCell: (row: ExampleRow) => row.name,
-  },
-  {
-    id: 'role',
-    header: 'Role',
-    renderCell: (row: ExampleRow) => row.role,
-  },
-] as const;
+function ExampleDataTable({ emptyMessage, rows }: { emptyMessage?: string; rows: ExampleRow[] }) {
+  const columns = useColumnDef<ExampleRow>(
+    {
+      id: 'name',
+      header: 'Name',
+      renderCell: (row) => row.name,
+    },
+    {
+      id: 'role',
+      header: 'Role',
+      renderCell: (row) => row.role,
+    },
+  );
 
-describe('TokenTable', () => {
+  return (
+    <DataTable
+      columns={columns}
+      description="Current members and responsibilities."
+      emptyMessage={emptyMessage}
+      getRowKey={(row: ExampleRow) => row.id}
+      rows={rows}
+      title="Team Directory"
+    />
+  );
+}
+
+describe('DataTable', () => {
   it('renders title, description, headers, and rows', () => {
     render(
-      <TokenTable
-        columns={columns}
-        description="Current members and responsibilities."
-        getRowKey={(row: ExampleRow) => row.id}
+      <ExampleDataTable
         rows={[
           { id: '1', name: 'Avery Stone', role: 'Design Systems' },
           { id: '2', name: 'Noah Reed', role: 'Frontend Platform' },
         ]}
-        title="Team Directory"
       />,
     );
 
@@ -49,15 +59,7 @@ describe('TokenTable', () => {
   });
 
   it('renders the empty message instead of a table when no rows are provided', () => {
-    render(
-      <TokenTable
-        columns={columns}
-        emptyMessage="Nothing to show."
-        getRowKey={(row: ExampleRow) => row.id}
-        rows={[]}
-        title="Team Directory"
-      />,
-    );
+    render(<ExampleDataTable emptyMessage="Nothing to show." rows={[]} />);
 
     expect(screen.getByText('Nothing to show.')).toBeInTheDocument();
     expect(screen.queryByRole('table')).not.toBeInTheDocument();
