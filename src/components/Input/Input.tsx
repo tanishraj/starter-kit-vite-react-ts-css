@@ -1,11 +1,8 @@
+import clsx from 'clsx';
 import { type InputEvent, type Ref, useEffect, useId, useRef, useState } from 'react';
 
 import type { InputProps } from './types';
 import './Input.css';
-
-function cx(...values: Array<string | false | null | undefined>) {
-  return values.filter(Boolean).join(' ');
-}
 
 function callRef<T>(ref: Ref<T> | undefined, value: T | null) {
   if (typeof ref === 'function') {
@@ -93,7 +90,7 @@ export function Input({
 
   return (
     <div
-      className={cx(
+      className={clsx(
         'inp',
         `inp--${variant}`,
         `inp--${size}`,

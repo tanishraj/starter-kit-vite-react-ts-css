@@ -1,11 +1,9 @@
+import clsx from 'clsx';
+
 import type { DividerProps } from './types';
 import type { CSSProperties } from 'react';
 
 import './Divider.css';
-
-function cx(...values: Array<string | false | null | undefined>) {
-  return values.filter(Boolean).join(' ');
-}
 
 export function Divider({
   orientation = 'horizontal',
@@ -28,7 +26,7 @@ export function Divider({
       {...rest}
       aria-hidden={decorative || undefined}
       aria-orientation={!decorative ? orientation : undefined}
-      className={cx(
+      className={clsx(
         'divider',
         `divider--${orientation}`,
         `divider--${variant}`,

@@ -1,10 +1,8 @@
+import clsx from 'clsx';
+
 import type { ButtonProps } from './types';
 import type { ReactNode } from 'react';
 import './Button.css';
-
-function cx(...values: Array<string | false | null | undefined>) {
-  return values.filter(Boolean).join(' ');
-}
 
 function renderIcon(icon: ReactNode, position: 'start' | 'end') {
   if (!icon) {
@@ -12,7 +10,7 @@ function renderIcon(icon: ReactNode, position: 'start' | 'end') {
   }
 
   return (
-    <span aria-hidden="true" className={cx('btn__icon', `btn__icon--${position}`)}>
+    <span aria-hidden="true" className={clsx('btn__icon', `btn__icon--${position}`)}>
       {icon}
     </span>
   );
@@ -39,7 +37,7 @@ export function Button({
     <button
       {...rest}
       ref={ref}
-      className={cx(
+      className={clsx(
         'btn',
         `btn--${variant}`,
         `btn--${size}`,
@@ -56,7 +54,7 @@ export function Button({
           <span className="btn__spinner" />
         </span>
       )}
-      <span className={cx('btn__content', loading && 'btn__content--hidden')}>
+      <span className={clsx('btn__content', loading && 'btn__content--hidden')}>
         {renderIcon(startIcon, 'start')}
         <span>{children}</span>
         {renderIcon(endIcon, 'end')}

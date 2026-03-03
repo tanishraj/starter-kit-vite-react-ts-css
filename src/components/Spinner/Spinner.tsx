@@ -1,9 +1,7 @@
+import clsx from 'clsx';
+
 import type { SpinnerProps } from './types';
 import './Spinner.css';
-
-function cx(...values: Array<string | false | null | undefined>) {
-  return values.filter(Boolean).join(' ');
-}
 
 export function Spinner({
   size = 'md',
@@ -17,7 +15,7 @@ export function Spinner({
       {...rest}
       aria-label={label}
       aria-live="polite"
-      className={cx(
+      className={clsx(
         'spinner',
         `spinner--${size}`,
         color !== 'current' && `spinner--color-${color}`,

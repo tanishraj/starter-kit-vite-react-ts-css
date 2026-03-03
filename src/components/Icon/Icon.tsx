@@ -1,9 +1,7 @@
+import clsx from 'clsx';
+
 import type { IconProps } from './types';
 import './Icon.css';
-
-function cx(...values: Array<string | false | null | undefined>) {
-  return values.filter(Boolean).join(' ');
-}
 
 const ICON_SOURCE_BY_PATH = import.meta.glob('../../assets/icons/**/*.svg', {
   eager: true,
@@ -69,7 +67,7 @@ export function Icon({
       {...rest}
       aria-hidden={isDecorative || undefined}
       aria-label={ariaLabel}
-      className={cx(
+      className={clsx(
         'icon',
         typeof size !== 'number' && `icon--${size}`,
         color !== 'current' && `icon--color-${color}`,
