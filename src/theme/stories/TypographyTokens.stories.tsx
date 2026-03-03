@@ -1,7 +1,7 @@
 import { DataTable, useColumnDef } from '../../components/DataTable';
 import { getAllCSSVariablesWithPrefix, getTokens } from '../../utils';
-import type { TokenEntry } from '../../utils';
 
+import type { TokenEntry } from '../../utils';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const typographyTokenNames = getAllCSSVariablesWithPrefix('--font-family');

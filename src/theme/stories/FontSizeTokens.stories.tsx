@@ -6,8 +6,8 @@ import {
   getTokens,
   getSortedTshirtSize,
 } from '../../utils';
-import type { TokenEntry } from '../../utils';
 
+import type { TokenEntry } from '../../utils';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const fontSizeCSSVars = getAllCSSVariablesWithPrefix('--font-size');

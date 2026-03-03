@@ -1,8 +1,8 @@
 import { DataTable } from './DataTable';
 import { useColumnDef } from './useColumnDef';
 
-import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { DataTableProps } from './types';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 type TeamRow = {
   id: string;
@@ -72,7 +72,11 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {
   render: (args) => (
     <div style={{ width: 'min(840px, 100%)' }}>
-      <TeamDataTable {...args} description="A reusable table with configurable columns and row rendering." title="Team Directory" />
+      <TeamDataTable
+        {...args}
+        description="A reusable table with configurable columns and row rendering."
+        title="Team Directory"
+      />
     </div>
   ),
 };
@@ -88,7 +92,12 @@ export const WithoutHeader: Story = {
 export const EmptyState: Story = {
   render: (args) => (
     <div style={{ width: 'min(840px, 100%)' }}>
-      <TeamDataTable {...args} emptyMessage="No team members found." rows={[]} title="Team Directory" />
+      <TeamDataTable
+        {...args}
+        emptyMessage="No team members found."
+        rows={[]}
+        title="Team Directory"
+      />
     </div>
   ),
 };

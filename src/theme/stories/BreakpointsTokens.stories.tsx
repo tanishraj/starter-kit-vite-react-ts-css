@@ -6,8 +6,8 @@ import {
   getTokens,
   getSortedTshirtSize,
 } from '../../utils';
-import type { TokenEntry } from '../../utils';
 
+import type { TokenEntry } from '../../utils';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const breakpointsCSSVars = getAllCSSVariablesWithPrefix('--breakpoint');
@@ -36,13 +36,7 @@ function getBreakpointRatios(values: readonly string[]) {
   return numericValues.map((value) => value / maxValue);
 }
 
-function BreakpointsDataTable({
-  ratios,
-  tokens,
-}: {
-  ratios: number[];
-  tokens: TokenEntry[];
-}) {
+function BreakpointsDataTable({ ratios, tokens }: { ratios: number[]; tokens: TokenEntry[] }) {
   const columns = useColumnDef<TokenEntry>(
     {
       id: 'token',
