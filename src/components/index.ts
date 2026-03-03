@@ -4,4 +4,6 @@ export * from './DataTable';
 export * from './Divider';
 export * from './Icon';
 export * from './Input';
+export * from './Radio';
+export * from './RadioGroup';
 export * from './Spinner';
