@@ -8,3 +8,4 @@ export * from './Radio';
 export * from './RadioGroup';
 export * from './Spinner';
 export * from './Tabs';
+export * from './Toast';
