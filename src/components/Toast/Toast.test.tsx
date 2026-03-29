@@ -1,48 +1,89 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { Toast } from './Toast';
+const { toastMock } = vi.hoisted(() => ({
+  toastMock: Object.assign(vi.fn(), {
+    dismiss: vi.fn(),
+    error: vi.fn(),
+    info: vi.fn(),
+    loading: vi.fn(),
+    promise: vi.fn(),
+    success: vi.fn(),
+    warning: vi.fn(),
+  }),
+}));
+
+vi.mock('react-toastify', () => ({
+  ToastContainer: (props: { position?: string; theme?: string }) => (
+    <div data-position={props.position} data-testid="toast-container" data-theme={props.theme} />
+  ),
+  toast: toastMock,
+}));
+
+import {
+  Toast,
+  dismissToast,
+  showErrorToast,
+  showInfoToast,
+  showLoadingToast,
+  showPromiseToast,
+  showSuccessToast,
+  showToast,
+  showWarningToast,
+} from './Toast';
 
 describe('Toast', () => {
-  it('renders heading and description', () => {
-    render(<Toast description="Profile changes were saved." heading="Saved" />);
-
-    expect(screen.getByText('Saved')).toBeInTheDocument();
-    expect(screen.getByText('Profile changes were saved.')).toBeInTheDocument();
+  beforeEach(() => {
+    toastMock.mockClear();
+    toastMock.dismiss.mockClear();
+    toastMock.error.mockClear();
+    toastMock.info.mockClear();
+    toastMock.loading.mockClear();
+    toastMock.promise.mockClear();
+    toastMock.success.mockClear();
+    toastMock.warning.mockClear();
   });
 
-  it('uses alert role for danger color', () => {
-    render(<Toast color="danger" description="Something failed." heading="Error" />);
+  it('renders the react-toastify container with forwarded props', () => {
+    render(<Toast position="bottom-left" theme="dark" />);
 
-    expect(screen.getByRole('alert')).toBeInTheDocument();
+    const container = screen.getByTestId('toast-container');
+
+    expect(container).toHaveAttribute('data-position', 'bottom-left');
+    expect(container).toHaveAttribute('data-theme', 'dark');
   });
 
-  it('calls onDismiss when dismiss button is clicked', async () => {
-    const onDismiss = vi.fn();
-    const user = userEvent.setup();
+  it('shows default toast', () => {
+    showToast('Saved');
 
-    render(<Toast heading="Saved" onDismiss={onDismiss} />);
-
-    await user.click(screen.getByRole('button', { name: 'Dismiss notification' }));
-
-    expect(onDismiss).toHaveBeenCalledTimes(1);
+    expect(toastMock).toHaveBeenCalledWith('Saved', undefined);
   });
 
-  it('calls action callback when action button is clicked', async () => {
-    const onAction = vi.fn();
-    const user = userEvent.setup();
+  it('shows typed toasts', () => {
+    showSuccessToast('Success');
+    showInfoToast('Info');
+    showWarningToast('Warning');
+    showErrorToast('Error');
+    showLoadingToast('Loading');
 
-    render(
-      <Toast
-        action={{ label: 'Undo', onClick: onAction }}
-        description="Your changes can be reverted."
-        heading="Item deleted"
-      />,
-    );
+    expect(toastMock.success).toHaveBeenCalledWith('Success', undefined);
+    expect(toastMock.info).toHaveBeenCalledWith('Info', undefined);
+    expect(toastMock.warning).toHaveBeenCalledWith('Warning', undefined);
+    expect(toastMock.error).toHaveBeenCalledWith('Error', undefined);
+    expect(toastMock.loading).toHaveBeenCalledWith('Loading', undefined);
+  });
 
-    await user.click(screen.getByRole('button', { name: 'Undo' }));
+  it('supports promise toasts and dismiss', async () => {
+    const promise = Promise.resolve('done');
 
-    expect(onAction).toHaveBeenCalledTimes(1);
+    showPromiseToast(promise, {
+      error: 'failed',
+      pending: 'loading',
+      success: 'done',
+    });
+    dismissToast('abc');
+
+    expect(toastMock.promise).toHaveBeenCalledTimes(1);
+    expect(toastMock.dismiss).toHaveBeenCalledWith('abc');
   });
 });

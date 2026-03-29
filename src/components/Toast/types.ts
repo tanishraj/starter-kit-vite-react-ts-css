@@ -12,7 +12,6 @@ export type ToastMessage = ToastContent;
 
 export type ToastMessageOptions = ToastOptions;
 
-export type ToastPromiseOptions<TData = unknown, TError = unknown, TPending = unknown> =
-  ToastPromiseParams<TData, TError, TPending>;
+export type ToastPromiseOptions = ToastPromiseParams;
 
 export type ToastId = Id;

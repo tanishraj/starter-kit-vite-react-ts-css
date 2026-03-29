@@ -68,9 +68,9 @@ export function showLoadingToast(content: ToastMessage, options?: ToastMessageOp
   return toast.loading(content, options);
 }
 
-export function showPromiseToast<TData = unknown, TError = unknown, TPending = unknown>(
+export function showPromiseToast<TData = unknown>(
   promise: Promise<TData> | (() => Promise<TData>),
-  options: ToastPromiseOptions<TData, TError, TPending>,
+  options: ToastPromiseOptions,
   toastOptions?: ToastMessageOptions,
 ) {
   return toast.promise(promise, options, toastOptions);

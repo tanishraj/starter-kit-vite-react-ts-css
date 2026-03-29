@@ -1,6 +1,12 @@
-import { useState } from 'react';
-
-import { Toast } from './Toast';
+import {
+  Toast,
+  showErrorToast,
+  showInfoToast,
+  showLoadingToast,
+  showPromiseToast,
+  showSuccessToast,
+  showWarningToast,
+} from './Toast';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -8,27 +14,35 @@ const meta = {
   title: 'Components/Toast',
   component: Toast,
   args: {
-    heading: 'Changes saved',
-    description: 'Your workspace preferences were updated successfully.',
-    variant: 'soft',
-    color: 'success',
-    dismissible: true,
+    autoClose: 3500,
+    closeOnClick: true,
+    draggable: true,
+    hideProgressBar: false,
+    newestOnTop: true,
+    pauseOnFocusLoss: true,
+    pauseOnHover: true,
+    position: 'top-right',
+    theme: 'light',
   },
   argTypes: {
-    variant: {
+    position: {
       control: 'radio',
-      options: ['soft', 'solid'],
+      options: [
+        'top-right',
+        'top-center',
+        'top-left',
+        'bottom-right',
+        'bottom-center',
+        'bottom-left',
+      ],
     },
-    color: {
+    theme: {
       control: 'radio',
-      options: ['neutral', 'info', 'success', 'warning', 'danger'],
-    },
-    onDismiss: {
-      action: 'dismissed',
+      options: ['light', 'dark', 'colored'],
     },
   },
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
   },
 } satisfies Meta<typeof Toast>;
 
@@ -36,65 +50,96 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+function buttonStyle(primary = false) {
+  return {
+    background: primary ? 'var(--color-bg-brand-solid)' : 'var(--color-bg-primary_alt)',
+    border: `1px solid ${
+      primary ? 'var(--color-border-brand)' : 'var(--color-border-primary)'
+    }`,
+    borderRadius: 'var(--radius-sm)',
+    color: primary ? 'var(--color-text-primary_on-brand)' : 'var(--color-text-primary)',
+    cursor: 'pointer',
+    font: 'inherit',
+    padding: '0.625rem 0.875rem',
+  } as const;
+}
+
+function actionsWrapStyle() {
+  return {
+    display: 'grid',
+    gap: 'var(--space-sm)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+    maxWidth: '900px',
+  } as const;
+}
+
 export const Playground: Story = {
   render: (args) => (
-    <div style={{ width: '420px' }}>
+    <div style={{ display: 'grid', gap: 'var(--space-md)' }}>
       <Toast {...args} />
-    </div>
-  ),
-};
-
-export const Variants: Story = {
-  render: (args) => (
-    <div style={{ display: 'grid', gap: 'var(--space-md)', width: '460px' }}>
-      <Toast {...args} heading="Soft variant" variant="soft" />
-      <Toast {...args} color="info" heading="Solid variant" variant="solid" />
-    </div>
-  ),
-};
-
-export const Stack: Story = {
-  render: (args) => (
-    <div style={{ display: 'grid', gap: 'var(--space-sm)', width: '460px' }}>
-      <Toast {...args} color="success" heading="Build succeeded" icon="✓" />
-      <Toast
-        {...args}
-        action={{ label: 'Retry', onClick: () => {} }}
-        color="warning"
-        description="The request timed out. Try again."
-        heading="Connection unstable"
-        icon="!"
-      />
-      <Toast
-        {...args}
-        color="danger"
-        description="We could not save your last changes."
-        heading="Save failed"
-        icon="×"
-      />
-    </div>
-  ),
-};
-
-export const Dismissible: Story = {
-  render: (args) => {
-    const [visible, setVisible] = useState(true);
-
-    return (
-      <div style={{ width: '420px' }}>
-        {visible ? (
-          <Toast
-            {...args}
-            color="info"
-            heading="Profile updated"
-            onDismiss={() => setVisible(false)}
-          />
-        ) : (
-          <button onClick={() => setVisible(true)} type="button">
-            Show toast
-          </button>
-        )}
+      <div style={actionsWrapStyle()}>
+        <button
+          onClick={() => showSuccessToast('Preferences were saved successfully.')}
+          style={buttonStyle(true)}
+          type="button"
+        >
+          Success
+        </button>
+        <button
+          onClick={() => showInfoToast('A new deployment is available.')}
+          style={buttonStyle()}
+          type="button"
+        >
+          Info
+        </button>
+        <button
+          onClick={() => showWarningToast('Your session will expire soon.')}
+          style={buttonStyle()}
+          type="button"
+        >
+          Warning
+        </button>
+        <button
+          onClick={() => showErrorToast('Failed to save the latest changes.')}
+          style={buttonStyle()}
+          type="button"
+        >
+          Error
+        </button>
+        <button
+          onClick={() => showLoadingToast('Syncing workspace data...')}
+          style={buttonStyle()}
+          type="button"
+        >
+          Loading
+        </button>
       </div>
-    );
-  },
+    </div>
+  ),
+};
+
+export const PromiseFlow: Story = {
+  render: (args) => (
+    <div style={{ display: 'grid', gap: 'var(--space-md)' }}>
+      <Toast {...args} />
+      <button
+        onClick={() =>
+          showPromiseToast(
+            new Promise<string>((resolve) => {
+              setTimeout(() => resolve('All files synced.'), 1500);
+            }),
+            {
+              error: 'Sync failed',
+              pending: 'Syncing files...',
+              success: 'Sync completed',
+            },
+          )
+        }
+        style={buttonStyle(true)}
+        type="button"
+      >
+        Trigger Promise Toast
+      </button>
+    </div>
+  ),
 };
