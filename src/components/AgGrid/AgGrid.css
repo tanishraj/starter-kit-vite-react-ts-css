@@ -1,0 +1,18 @@
+.ag-grid-shell {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.ag-grid {
+  min-inline-size: 0;
+}
+
+.ag-grid.ag-grid--auto-height .ag-layout-auto-height .ag-center-cols-container,
+.ag-grid.ag-grid--auto-height .ag-layout-auto-height .ag-center-cols-viewport {
+  min-height: unset;
+}
+
+.ag-grid.ag-grid--auto-height.ag-grid--empty .ag-layout-auto-height .ag-center-cols-container,
+.ag-grid.ag-grid--auto-height.ag-grid--empty .ag-layout-auto-height .ag-center-cols-viewport {
+  min-height: 3.5rem;
+}

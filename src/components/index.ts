@@ -1,3 +1,4 @@
+export * from './AgGrid';
 export * from './Button';
 export * from './Checkbox';
 export * from './DataTable';
